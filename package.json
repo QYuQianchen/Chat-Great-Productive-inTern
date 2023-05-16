@@ -1,0 +1,14 @@
+{
+  "name": "reps-summary",
+  "version": "1.0.0",
+  "description": "Auto generate summary for dev updates",
+  "main": "index.js",
+  "author": "QYuQianchen",
+  "license": "MIT",
+  "private": null,
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "openai": "^3.2.1",
+    "request": "^2.88.2"
+  }
+}

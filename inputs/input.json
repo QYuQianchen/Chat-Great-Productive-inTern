@@ -1,0 +1,666 @@
+[
+   {
+      "author":"robertkiel",
+      "body":"another merge-back",
+      "state":"MERGED",
+      "title":"Merge back release/bratislava #3",
+      "updatedAt":"2023-05-12T17:43:36Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5055"
+   },
+   {
+      "author":"robertkiel",
+      "body":"- Updates README\r\n- cleanup yarn lockfile\r\n- cleanup cargo vendor\r\n",
+      "state":"MERGED",
+      "title":"prepare 1.93.6",
+      "updatedAt":"2023-05-11T13:27:09Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5052"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Increase the limit to make restarts less often.",
+      "state":"MERGED",
+      "title":"Increase memory limit for Avado to 2GB",
+      "updatedAt":"2023-05-11T12:58:17Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5051"
+   },
+   {
+      "author":"robertkiel",
+      "body":"This reverts commit 9f428f86490fc6264aeb34892effe97834e19bdb.",
+      "state":"MERGED",
+      "title":"Revert \"migrate core (#4963)\"",
+      "updatedAt":"2023-05-11T12:45:42Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5050"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"",
+      "state":"MERGED",
+      "title":"Update to docker-compose to Bratislava",
+      "updatedAt":"2023-05-11T12:48:12Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5049"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"",
+      "state":"MERGED",
+      "title":"Remove conflicting dependencies from the test requirements file",
+      "updatedAt":"2023-05-11T09:24:38Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5047"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nPython HOPRd API now lives in a separate repository for easy pip based access.",
+      "state":"MERGED",
+      "title":"Extract python hoprd api into separate repository",
+      "updatedAt":"2023-05-11T09:02:02Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5046"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR improves the following:\r\n- better error handling when parsing Balance\r\n- PublicKey type now supports also non-prefixed deserialized forms (64 bytes)\r\n- adds missing `serialize` TS binding for the PublicKey type \r\n- add unit tests for `Address` type\r\n- add convenience `hash` method to `Hash` type in Rust\r\n\r\nPrerequisite for https://github.com/hoprnet/hoprnet/pull/5039",
+      "state":"MERGED",
+      "title":"Add missing TS binding and small Rust types fixes",
+      "updatedAt":"2023-05-12T06:45:50Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5045"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Simple renaming of methods of the `BinarySerializable` trait to make it compatible with `serde`",
+      "state":"MERGED",
+      "title":"Rename `serialize`/`deserialize` to `to_bytes`/`from_bytes` in the `BinarySerializable` trait",
+      "updatedAt":"2023-05-11T08:08:32Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5044"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR adds various improvements and fixes to `core-types` and `utils-types` crates.\r\n\r\nNamely:\r\n - added unit tests\r\n - added TS bindings for type methods\r\n - added missing functions needed in TS\r\n\r\nThis is cherry-pick (and prerequisite) for #5039 ",
+      "state":"MERGED",
+      "title":"Cherry-pick Rust type improvements",
+      "updatedAt":"2023-05-11T07:11:24Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5043"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Unblock CI https://github.com/hoprnet/hoprnet/actions/runs/4936249533/jobs/8823556354?pr=4882\r\n\r\nError log\r\n```\r\nError: \r\nError accessing local wallet. Did you set a private key, mnemonic or keystore?\r\nRun `cast send --help` or `forge create --help` and use the corresponding CLI\r\nflag to set your key via:\r\n--private-key, --mnemonic-path, --aws, --interactive, --trezor or --ledger.\r\nAlternatively, if you're using a local node with unlocked accounts,\r\nuse the --unlocked flag and either set the `ETH_FROM` environment variable to the address\r\nof the unlocked account you want to use, or provide the --from flag with the address directly.\r\nmake[3]: *** [Makefile:40: anvil-deploy-erc1820] Error 1\r\nmake[3]: Leaving directory '/home/runner/work/hoprnet/hoprnet/packages/ethereum/contracts'\r\nmake[2]: *** [Makefile:55: anvil-deploy-all] Error 2\r\nmake[2]: Leaving directory '/home/runner/work/hoprnet/hoprnet/packages/ethereum/contracts'\r\n23-05-10T11:16:01Z [run-local-anvil] Stop anvil network\r\n```\r\n\r\nThe reason is that foundry requires to have unlocked wallet to send transaction. One of the ways to unlock a wallet is to pass private key with `--private-key`. Given this private-key is a well-known key used in web3 project development, it is safe to pass it as clear text.",
+      "state":"MERGED",
+      "title":"Hotfix: Make known development private key explicit",
+      "updatedAt":"2023-05-11T08:18:51Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5041"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Added `AccountEntry` type to `core-types` crate, because it was missing.\r\nPrerequisite for DB migration to Rust #4543 \r\n\r\nAlso fixes a typo in `acknowledgement` module name in `core-types`",
+      "state":"MERGED",
+      "title":"Add missing AccountEntry type for use in the DB",
+      "updatedAt":"2023-05-10T19:04:39Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5038"
+   },
+   {
+      "author":"robertkiel",
+      "body":"### Tldr\r\n\r\nAdds a patch to a libp2p library used for managing known addresses\r\n\r\n### Current situation\r\n\r\n*Before* adding new addresses to the PeerStore (== the list of known addresses), there is a check whether the size of the addresses is the same.\r\n\r\nIf an address in the list *changes*, the *size* stays the same and thus the entire request is ignored.\r\n\r\n### New behavior\r\n\r\nRemove this check and rather do some additional db queries",
+      "state":"MERGED",
+      "title":"fix libp2p address store",
+      "updatedAt":"2023-05-09T14:51:14Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5037"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe Python API was introduced to facilitate simple interaction with HOPRd using a native Python interface. Since the possible usage of such an API has outgrown the sole test use case, the entire Python wrapper has been moved to a separate packaging directory with proper packaging using `setuptools` in order to allow referencing the new package as a separate requirement from any repository.",
+      "state":"MERGED",
+      "title":"Extract python API into a separate package",
+      "updatedAt":"2023-05-09T09:11:57Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5034"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"- Fix deployment skipping files on vendor by dockerignore\r\n- Improve the logging on metrics",
+      "state":"MERGED",
+      "title":"Fix deployment",
+      "updatedAt":"2023-05-11T12:48:30Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5033"
+   },
+   {
+      "author":"robertkiel",
+      "body":"Ports missing changes from Riga (`1.92.10` to `1.92.12`) to `master`. See #4888 for reference",
+      "state":"MERGED",
+      "title":"forward-port #4714",
+      "updatedAt":"2023-05-04T09:47:37Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5032"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Staging upgrade to 1.93.5",
+      "state":"MERGED",
+      "title":"Staging upgrade Release Bratislava",
+      "updatedAt":"2023-04-28T15:58:01Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5027"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"As in title.",
+      "state":"MERGED",
+      "title":"Remove additional -- in install-toolchain.sh",
+      "updatedAt":"2023-04-28T10:14:57Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5024"
+   },
+   {
+      "author":"tolbrino",
+      "body":"This will prevent circuit connections being created by public relay nodes and also prevent the update of listening addresses in the DHT.\r\n\r\nAlso:\r\n\r\n- Add heartbeat and cleanup to API websocket connections\r\n\r\nRef #4881 \r\n\r\nNote: Ideally we would also disable the use of relay connections for public nodes. But when doing so they do not connect to the DHT and never are able to connect to other nodes in the network. This might be a bug.",
+      "state":"MERGED",
+      "title":"[hotfix/bratislava] connect: Ensure public relay nodes don't create relay connections",
+      "updatedAt":"2023-05-11T09:35:35Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5023"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nRelease upgrade for Bratislava #4.",
+      "state":"MERGED",
+      "title":"Release upgrade bratislava #4",
+      "updatedAt":"2023-04-28T09:26:59Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5021"
+   },
+   {
+      "author":"robertkiel",
+      "body":"`hopr` uses libp2p for peer-to-peer communication. libp2p uses multiformats/Multiaddr to address nodes. Multiaddrs *can* include the PeerId of the destination, e.g.\r\n\r\n```\r\n/p2p/16Uiu2HAkwecC3n6BG3odw4WC3PjEPv36HyHsHE4dxGotXWgXynrh/p2p-circuit/p2p/16Uiu2HAmEcAW62hrT2Rd19SFLJvx7ZxvtuDFFf8pbUwMRZx4xyfv\r\n```\r\n\r\nbut they don't need to since the destination peerId is already known when dialing a peer. this is why they are stored and transferred as:\r\n\r\n```\r\n/p2p/16Uiu2HAkwecC3n6BG3odw4WC3PjEPv36HyHsHE4dxGotXWgXynrh/p2p-circuit\r\n``` \r\n\r\nunfortunately, there is no *coercing* method foreseen to automatically convert *long* addresses into *short* addresses.\r\n\r\nThis PR adds a `yarn patch` to add the missing coercion from *long* addresses to *short* address when pushing address information to other peers.",
+      "state":"MERGED",
+      "title":"coerce libp2p addrs",
+      "updatedAt":"2023-04-28T20:44:14Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5020"
+   },
+   {
+      "author":"robertkiel",
+      "body":"Adds mock for a missing method that made the unit test break after #5004 \r\n\r\nre https://github.com/hoprnet/hoprnet/actions/runs/4820700047/jobs/8585558510?pr=5006",
+      "state":"MERGED",
+      "title":"fix unit test suite",
+      "updatedAt":"2023-04-27T15:27:39Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5013"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nAdd serde support to basic core types used in the DB interface.\r\n\r\n## Info\r\n`BinarySerializable` could be transformed into a `serde` `Serializer` and `Deserializer`.\r\n\r\nRelates to #4543 \r\nBlocks #4994 ",
+      "state":"MERGED",
+      "title":"Extend basic types to support serialization and deserialization",
+      "updatedAt":"2023-04-28T06:16:37Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5012"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Similar fuzzy test may fail in master, as in `staging/bratislava`, see https://github.com/hoprnet/hoprnet/actions/runs/4819865662\r\n\r\nPort fixes in https://github.com/hoprnet/hoprnet/pull/5006 to master\r\n\r\nFixes tests due to changes in foundry https://github.com/foundry-rs/foundry/pull/4827",
+      "state":"MERGED",
+      "title":"hotfix fuzzy test",
+      "updatedAt":"2023-05-05T13:51:07Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5011"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Porting https://github.com/hoprnet/hoprnet/pull/4907 and https://github.com/hoprnet/hoprnet/pull/4906\r\n\r\n- add stake season 7 contracts and test\r\n- update contracts-addresses.json and protocol-config.json",
+      "state":"MERGED",
+      "title":"Update Stake season 7 contract to Bratislave release",
+      "updatedAt":"2023-04-27T15:30:03Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5006"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"Disable docker build on every PR push until we provide a solution for running such amount of jobs.",
+      "state":"MERGED",
+      "title":"Disable docker build",
+      "updatedAt":"2023-04-27T09:39:25Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5005"
+   },
+   {
+      "author":"robertkiel",
+      "body":"Enhancements to the dialing logic to make its debugging easier\r\n\r\n- when outputting known addresses, sort them in the order in which they are dialed\r\n- add connection identifiers whenever possible to debug logs\r\n- when establishing a connection, add the utilized Multiaddr to the debug logs",
+      "state":"MERGED",
+      "title":"enhance dialing logs",
+      "updatedAt":"2023-04-27T08:35:59Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/5004"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR add some metrics relevant to RPCh failed request debugging.\r\n\r\nIt also adds a regex distinguisher of raw RPCh messages in order to log them in hoprd logs for further processing.",
+      "state":"MERGED",
+      "title":"Add metrics \u0026 logs relevant for RPCh debugging",
+      "updatedAt":"2023-04-27T08:37:33Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4995"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Some minor stuff spotted mostly by a linter.\r\n\r\nFeel free to improve/change.",
+      "state":"MERGED",
+      "title":"Small code-style improvements to `hopli`",
+      "updatedAt":"2023-04-26T09:08:25Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4975"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR is a prerequisite for #4834, #4885  and #4706.\r\n\r\nIt introduces the following new types required by the DB:\r\n- `Acknowledgment`\r\n- `AcknowledgedTicket`\r\n- `UnacknowledgedTicket`\r\n- `AcknowledgementChallenge`\r\n- `PendingAcknowledgement`\r\n\r\nThere are also many cryptographic optimizations, namely:\r\n\r\n- `sample_group_element` is done properly via `hash_to_field`\r\n- Abstraction of digest-like types: `SimpleDigest`, `SimpleMac`, `EthDigest`\r\n- Zero-copy options for PRP transformation\r\n- `types` module in `core-crypto` has been refactored to better abstract out elliptic curve artifacts\r\n- `shared_keys` module has better abstraction from the elliptic curve artifacts \r\n- `Response` type has been moved from `core-types` to `core-crypto::types` due to its reliance on cryptographic operations\r\n",
+      "state":"MERGED",
+      "title":"Introduce new types \u0026 optimize cryptographic code",
+      "updatedAt":"2023-04-26T13:45:01Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4974"
+   },
+   {
+      "author":"robertkiel",
+      "body":"further migrate heartbeat and network peers functionality to Rust\r\n\r\n- `core_network` becomes a leaf module\r\n- direct callbacks to libp2p protocol handler\r\n- direct invocation of dialHelper functionality in `utils`\r\n- fewer JS-exposed APIs\r\n- **safe** implementation of JS duplex stream to Rust DuplexStream (`futures::Sink + futures::Stream`)",
+      "state":"MERGED",
+      "title":"migrate core",
+      "updatedAt":"2023-05-02T10:32:57Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4963"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"As in title. The `build-avado.sh` script runs with `DRY_RUN=false` per default.\r\n\r\nhttps://github.com/hoprnet/hoprnet/actions/runs/4784602598/jobs/8507097956",
+      "state":"MERGED",
+      "title":"Set default value for DRY_RUN env variable in Avado build",
+      "updatedAt":"2023-04-24T12:36:03Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4960"
+   },
+   {
+      "author":"robertkiel",
+      "body":"adds missing changelog from #4958 ",
+      "state":"MERGED",
+      "title":"update changelog",
+      "updatedAt":"2023-04-24T09:51:48Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4959"
+   },
+   {
+      "author":"robertkiel",
+      "body":"*Before* announcing addresses to the DHT, `js-libp2p` makes use of an internal cache that prevents the PeerRecordUpdater from using the latest addresses.\r\n\r\nThe PeerRecordUpdater\r\n\r\nhttps://github.com/libp2p/js-libp2p/blob/v0.37.3/src/peer-record-updater.ts#L25\r\n\r\nThe cache in libp2p AddressManager\r\n\r\nhttps://github.com/libp2p/js-libp2p/blob/v0.37.3/src/address-manager/index.ts#L107",
+      "state":"MERGED",
+      "title":"wipe address manager cache",
+      "updatedAt":"2023-04-24T09:23:23Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4958"
+   },
+   {
+      "author":"tolbrino",
+      "body":"Dead connections are not properly cleaned from the libp2p connection managers internal data. This PR tries to ensure that this happens, such that these entries are properly freed.\r\n\r\n```\r\n2023-04-22T21:34:59.585Z hopr-core:libp2p dead connections to 16Uiu2HAmQ3CgoDqZE4eub44nZ7RUnNTqd1eTsk1vZxUhA5uaa97i [ 'abgzy41682198229621', '58xi1c1682198490514', '9rm2d01682198736128' ]\r\n```",
+      "state":"MERGED",
+      "title":"Enforce closing and clean-up of libp2p2 connections",
+      "updatedAt":"2023-04-24T09:29:33Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4957"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR fixes the `memmon` introduced in #4898 . \r\nThe reason for `memmon` failing to monitor was missing `ps` command in the HOPRd Avado docker image.\r\n\r\nIt also introduces the `DRY_RUN` flag that can be used with `build-avado.sh` script to only generate the `docker-compose.yml` file without building the actual Avado image. This is useful for testing.\r\n\r\nThe order of `upstream_version` and `api_token` in the `build-avado.sh` script was also swapped for convenience.\n\nRefs #4854",
+      "state":"MERGED",
+      "title":"Fix `memmon` to properly monitor memory usage of HOPRd on Avado",
+      "updatedAt":"2023-04-21T09:17:04Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4944"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nBasic merge-back update for the bratislava release.\r\n\r\nRefs #4704 ",
+      "state":"MERGED",
+      "title":"Upgrade staging/bratislava from the current release/bratislava branch",
+      "updatedAt":"2023-04-20T12:22:04Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4939"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nRegular staging merge to `release/bratislava`.\r\n\r\nRefs #4704 ",
+      "state":"MERGED",
+      "title":"Release upgrade bratislava #3",
+      "updatedAt":"2023-04-20T09:51:09Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4937"
+   },
+   {
+      "author":"SCBuergel",
+      "body":"",
+      "state":"MERGED",
+      "title":"renamed Safes, removed double entry",
+      "updatedAt":"2023-04-20T09:15:35Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4933"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"- Fixing when docker builds should trigger",
+      "state":"MERGED",
+      "title":"Fixing docker build triggers",
+      "updatedAt":"2023-04-19T16:27:32Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4927"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe histogram metrics for heartbeat were cancelled instead of recorded.\r\n",
+      "state":"MERGED",
+      "title":"Fix heartbeat metrics",
+      "updatedAt":"2023-04-19T12:09:07Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4919"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR adds a pruning mechanism to the Relay code.\r\nThe pruning mechanism sends low-level ping to all the relay connections (both source and destination) and if they do not respond within time (currently 300 ms), the relay will evict that connection from the registry.\r\n\r\nThis PR also adds new metric `connect_gauge_evicted_relayed_conns` to monitor the eviction rate of the inactive connections from the relay state.\r\n\r\nThe keep-alive rounds are done periodically in a random interval between 15 to 35 seconds.\r\n\r\nAs a follow-up, the keep-alive mechanism should be updated later to work similarly as HOPR protocol heartbeats.",
+      "state":"MERGED",
+      "title":"Remove inactive relay connections during the relay's keep-alive rounds",
+      "updatedAt":"2023-04-19T16:11:17Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4916"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\n`ruff` is extremely fast and can detect almost all python lint rules, therefore is a welcome addition to the stack.",
+      "state":"MERGED",
+      "title":"Add ruff linter for python code",
+      "updatedAt":"2023-04-19T05:53:39Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4915"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nFix cachix install on the `master` branch.",
+      "state":"MERGED",
+      "title":"Fix cachix install using nix",
+      "updatedAt":"2023-04-18T21:21:16Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4914"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nFix cachix nix install by updating the github action.",
+      "state":"MERGED",
+      "title":"Fix cachix install",
+      "updatedAt":"2023-04-18T20:05:13Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4913"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Fixes the bug of ever-growing number of relayed connections on a relay node.\r\n\r\nFixes https://github.com/hoprnet/hoprnet/issues/4507",
+      "state":"MERGED",
+      "title":"Add RelayState cleanup and set a limit of maximum relayed connections to 2000",
+      "updatedAt":"2023-04-18T17:55:41Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4912"
+   },
+   {
+      "author":"tolbrino",
+      "body":"Made externref work.",
+      "state":"MERGED",
+      "title":"Fix wasm externref configuration",
+      "updatedAt":"2023-04-18T13:43:54Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4911"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nExperimental PR that adds extern refs on top of the weak refs.\r\n\r\n## Other\r\nRelates to #4908 and #4909",
+      "state":"MERGED",
+      "title":"Experimental - port weak refs together with extern refs",
+      "updatedAt":"2023-04-18T13:47:34Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4910"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"See #4908 for an extended description.",
+      "state":"MERGED",
+      "title":"Port weak ref wasm bindgen builds to bratislava",
+      "updatedAt":"2023-04-18T14:34:11Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4909"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"**DO NO MERGE** until the S7 starts (April 26th 2pm CET), as this will change the `protocol-config.json` file\r\nUpdate the `contracts-addresses.json` as well as `protocol-config.json` file",
+      "state":"MERGED",
+      "title":"Update staking s7 contract addresses",
+      "updatedAt":"2023-04-26T12:01:00Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4907"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Include staking season 7 contracts https://github.com/hoprnet/hopr-devrel/issues/326\r\nThis PR is save to merge. The update to `protocol-config` is in a separate PR https://github.com/hoprnet/hoprnet/pull/4907",
+      "state":"MERGED",
+      "title":"Staking Season 7 contracts",
+      "updatedAt":"2023-04-26T12:00:50Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4906"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe WebRTC change did not appear to affect the daemon instability.",
+      "state":"MERGED",
+      "title":"Revert webrtc change",
+      "updatedAt":"2023-04-17T06:52:03Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4901"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Installs the `superlance` plugin for `supervisord` in the HOPR Avado image and uses `memmon` tool to monitor memory limit of the `hoprd` application. \r\nThe limit is set to 1GB.\r\n\r\nFixes #4854",
+      "state":"MERGED",
+      "title":"[hotfix/bratislava] Use superlance to monitor hoprd memory usage",
+      "updatedAt":"2023-04-17T11:23:26Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4898"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\n- [x] Update Rust to the latest stable release [1.67.1](https://github.com/rust-lang/rust/blob/master/RELEASES.md)\r\n- [x] Minor stylistic fixes to the shell.nix configuration",
+      "state":"MERGED",
+      "title":"Update the base version of Rust",
+      "updatedAt":"2023-04-17T06:53:50Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4897"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Update staging after releasing 1.93.1",
+      "state":"MERGED",
+      "title":"Staging upgrade bratislava",
+      "updatedAt":"2023-04-17T15:27:41Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4896"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"release `1.93.1`",
+      "state":"MERGED",
+      "title":"Release upgrade bratislava/v1.93.1",
+      "updatedAt":"2023-04-14T15:11:27Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4895"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Closes https://github.com/hoprnet/hoprnet/issues/4836 https://github.com/hoprnet/hoprnet/issues/4826\r\nPorted changes from https://github.com/hoprnet/hoprnet/pull/4886\r\n\r\n- Removed most dependancies on `ethers-rs`, except for uint256 parsing `use ethers::{types::U256,utils::parse_units}`\r\n- Turn `faucet` script to funding to a target amount of tokens. This command is idempotent.\r\n- Add `initialize-node` command to stake + register + fund an identity in an express way\r\n```\r\nPRIVATE_KEY=\u003cbank_private_key\u003e \\\r\nhopli initialize-node --environment-name anvil-localhost \\\r\n    --identity-directory \"/tmp\" \\\r\n    --password-path \"/tmp/.pwd\" \\\r\n    --hopr-amount 1 --native-amount 0.1 \\\r\n    --contracts-root \"../ethereum/contracts\"\r\n```\r\n- Extend `register-in-network-registry` to accept identity files\r\n- Replace `read_identities` function to return `NodeIdentity` struct which contains \"peer_id\" and \"ethereum_address\"\r\n- Add `to_checksum` function in `core-crypto` crate to return a checksumed address string.\r\n- Add `LocalIdentityArgs`, which accepts `--identity-from-path` along with `--identity-directory` for most of the cases. The only exception is in creating identity files.",
+      "state":"MERGED",
+      "title":"Extend hopli",
+      "updatedAt":"2023-04-21T10:20:36Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4894"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nFix cachix to have working builds.",
+      "state":"MERGED",
+      "title":"Fix cachix",
+      "updatedAt":"2023-04-14T10:05:22Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4893"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nReturns the wrtc version used in the release Riga, drops support for Apple Sillicon.\r\n\r\nNecessary due to an increased amount of failed connections causing restarts.\r\n\r\n## Other\r\nLikely will fix #4881 to Riga behavior.",
+      "state":"MERGED",
+      "title":"Return the Riga version of webRTC",
+      "updatedAt":"2023-04-14T11:00:13Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4892"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nPRs are failing the lint because the master branch contains incorrect formatting.",
+      "state":"MERGED",
+      "title":"Fix broken formatting",
+      "updatedAt":"2023-04-14T09:41:49Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4891"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nFix CI builds that use cachix by ignoring the errors.",
+      "state":"MERGED",
+      "title":"Ignore errors if cachix fails",
+      "updatedAt":"2023-04-13T18:59:41Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4889"
+   },
+   {
+      "author":"robertkiel",
+      "body":"Forward-ports left changes in `riga` release to `bratislava`. See commit https://github.com/hoprnet/hoprnet/commit/ee9709a19ab98afb200f1b33a46bccc7597279d5\r\n\r\n----\r\n\r\nList of squashed commits\r\n\r\n* enhance address sorting (#4684)\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.11-next.1\r\n\r\n* Docker: expose udp ports (#4686)\r\n\r\n* change Dockerfile and docker run commands\r\n\r\n* remove linting\r\n\r\n* remove linting\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.11-next.2\r\n\r\n* enhance dht and libp2p config (#4685)\r\n\r\n* enhance dht and libp2p config\r\n\r\n* add CHANGELOG entries\r\n\r\n* incorporate feedback\r\n\r\n* restore previous protocols\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.12-next.0\r\n\r\n* Fix NAT detection when running in GCP (#4692)\r\n\r\n* enhance dht and libp2p config\r\n\r\n* add CHANGELOG entries\r\n\r\n* incorporate feedback\r\n\r\n* restore previous protocols\r\n\r\n* fix gcp NAT detection\r\n\r\n* add changelog entry\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.12-next.1\r\n\r\n* use native hopr STUN servers (#4703)\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.12-next.2\r\n\r\n---------",
+      "state":"MERGED",
+      "title":"port: Release update riga/v1.92.12 (#4714)",
+      "updatedAt":"2023-04-14T06:53:31Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4888"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\n- [x] Add stress test to verify that a larger number of send message queires go through",
+      "state":"MERGED",
+      "title":"Add stress test for send message",
+      "updatedAt":"2023-04-14T12:36:51Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4887"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\n- [x] Wrap existing DB implementation with a Rust-JS wrapper\r\n- [x] Prepare tests for the migrated Rust wrappers\r\n- [x] Bind both JS and Rust implementations to use the same base LevelDb API\r\n- [x] Remove public key prefix from the DB keys\r\n\r\n## Other\r\nBuilds base for #4543",
+      "state":"MERGED",
+      "title":"Create DB functionality shim in Rust",
+      "updatedAt":"2023-04-27T08:01:55Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4885"
+   },
+   {
+      "author":"tolbrino",
+      "body":"Fixes #4646\r\n\r\nThis PR fixes locations of some log files used in the smoke tests and adds an additional log file which can be tailed during a running smoke tests.\r\n\r\nTest coverage of the send message functionality is added as a smoke test.",
+      "state":"MERGED",
+      "title":"api: Add send message over web socket support",
+      "updatedAt":"2023-05-10T15:04:36Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4882"
+   },
+   {
+      "author":"QYuQianchen",
+      "body":"Fix similar issues (https://github.com/hoprnet/hoprnet/actions/runs/4628689421) in runners that's been fixed in https://github.com/hoprnet/hoprnet/pull/4833",
+      "state":"MERGED",
+      "title":"Port changes in PR#4833 to release Bratislava to unblock CICD",
+      "updatedAt":"2023-04-07T12:35:25Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4880"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nA merge back of the `release/bratislava` branch into the `master` branch",
+      "state":"MERGED",
+      "title":"Merge back release/bratislava #2",
+      "updatedAt":"2023-04-11T08:04:49Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4876"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\n- [x] First release upgrade for `bratislava` based on the `staging/bratislava` branch\r\n\r\n",
+      "state":"MERGED",
+      "title":"Release upgrade bratislava",
+      "updatedAt":"2023-04-06T12:09:02Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4873"
+   },
+   {
+      "author":"tolbrino",
+      "body":"Refs #4866 ",
+      "state":"MERGED",
+      "title":"[hotfix/bratislava] Added mitigation for connection leakage to prevent DHT and p2p connection failures",
+      "updatedAt":"2023-04-05T15:38:29Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4870"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe scopeguard caused the counters to be moved, thereby always leaving an empty default 0 counter behind it.\r\n\r\nFixed to make sure the timer always gets updated inside a correct object.\r\n\r\nRefs #4600 ",
+      "state":"MERGED",
+      "title":"[HOTFIX] Ping metrics not being propagated correctly",
+      "updatedAt":"2023-04-07T12:44:07Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4867"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nWhilest only using the `libp2p::PeerId`, the entire dependency on libp2p is unnecessary and therefore replaced with `libp2p_identity`.",
+      "state":"MERGED",
+      "title":"Optimize core-network dependencies",
+      "updatedAt":"2023-04-05T12:34:51Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4865"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"Updated steps for publishing a Dappnode release for clarity.",
+      "state":"MERGED",
+      "title":"Updated Dappnode publish guide",
+      "updatedAt":"2023-04-05T07:28:13Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4858"
+   },
+   {
+      "author":"tolbrino",
+      "body":"Also:\r\n\r\n- added use of larger CI runners for a subset of workflows\r\n- fixed some CI workflow inconsistencies\r\n- added CI workflow for cache cleanup after PR merge",
+      "state":"MERGED",
+      "title":"python: Add black formatter",
+      "updatedAt":"2023-04-05T08:19:21Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4841"
+   },
+   {
+      "author":"tolbrino",
+      "body":"Fixes CI issues:\r\n\r\nhttps://github.com/hoprnet/hoprnet/actions/runs/4597636347/jobs/8120603806\r\nhttps://github.com/hoprnet/hoprnet/actions/runs/4576997352/jobs/8082895375",
+      "state":"MERGED",
+      "title":"ci: Fix invocation of test runs",
+      "updatedAt":"2023-04-03T19:03:43Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4833"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe docs were missing `use` clauses causing the docs to fail tests.",
+      "state":"MERGED",
+      "title":"Fix failing relay docs tests",
+      "updatedAt":"2023-04-03T13:03:27Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4831"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"This is the first merge back from Bratislava release to master\r\nOnly changes versioning schema",
+      "state":"MERGED",
+      "title":"Merge back release/bratislava #1",
+      "updatedAt":"2023-04-13T11:24:40Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4830"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR introduces the following  changes:\r\n\r\n## New features\r\n\r\n### Metadata in `PeerStatus`\r\nEach entry (`PeerStatus`) in the Heartbeat peer registry (`Network`) now contains a dictionary of per-peer metadata. This an arbitrary dictionary of string-based key-value pairs. It starts as empty (or can be pre-populated by using `add_with_metadata` method when new peer entry is added), but can be updated on each `update_with_metadata` call - the changes are merged (upserted).\r\n\r\n### Added `protocol_version` metadata\r\nThe ping mechanism is enhanced to extract the current HOPR protocol version from the ping sub-protocol transport layer. This extracted value is then used as metadata for the respective `PeerStatus` entry in the Heartbeat registry. This effectively adds the reported protocol version information into the peer registry, from where it could be later queried.\r\n\r\n### The `reportedVersion` exposed in the `v2/node/ping` and `v2/node/peers` API endpoints\r\nA new entry `reportedVersion` entry is added to the HTTP response body of the Ping API endpoint. The value contains the latest protocol version queried from the heartbeat peer registry (where it's been updated after the ping).\r\n\r\n## Refactoring\r\n\r\n### Automatic serialization method\r\nA new trait `AutoBinarySerializable` has been introduced. The trait poses as a default implementation of the `BinarySerializable` trait that has been introduced earlier. The default implementation uses `bincode` binary format to perform automatic serialization/deserialization of the type that implements `AutoBinarySerializable`, instead of having to implement that manually if only `BinarySerializable` trait has been implemented.\r\n\r\nWhen a developer is about to introduce a new type `X` that needs serialization, they can decide whether to use either:\r\n- an effortless serialization strategy: `impl AutoBinarySerializable for X { }` \r\n- or write their own serialization format: `impl BinarySerializable for X { ... }`\r\n\r\nThe `AutoBinarySerializable` trait is meant to abstract out the underlying binary format, so e.g. `bincode` can be replaced in the future with a different one if needed (`minicbor`, `protobuf`...).\r\n\r\n### Ping sub-protocol enhancements\r\nThe ping/pong protocol messages are now implemented as types using the `ControlMessage` sub-protocol. This already uses the newly introduced `AutoBinarySerializable` strategy and relevant cryptographic code from the `core-crypto` crate. Due to backwards compatibility, a new `compat-ping` feature has been introduced to `core-network` crate (enabled by default), so that the ping/pong messages are compatible with older HOPR versions when serialized/deserialized. The `compat-ping` feature will be turned off in the future backwards incompatible release. This opens up the possibility of extending the `ControlMessage` sub-protocol in the future, so it can carry more data (e.g. to report locally perceived peer qualities in order to allow https://github.com/hoprnet/hoprnet/issues/4720).\r\n\r\nCloses https://github.com/hoprnet/hoprnet/issues/4547",
+      "state":"MERGED",
+      "title":"Introduce version information into Ping sub-protocol ",
+      "updatedAt":"2023-04-03T17:38:03Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4828"
+   },
+   {
+      "author":"NumberFour8",
+      "body":"This PR brings the following fixes to `core-strategy`, namely to the Promiscuous strategy:\r\n\r\n- a new internal setting allows the strategy to close channels (even if with high-quality peer) if the maximum number of channels (either manual or computed automatically from the network size) has been exceeded. This setting is enabled by default, so the strategy will be aggressive in enforcing the maximum number of opened channels. No distinction is done between channels opened manually or via the strategy.\r\n- an integer overflow possibility has been fixed, which sometimes caused a more than the allowed number of channels to be opened (fixes https://github.com/hoprnet/hoprnet/issues/4776)\r\n\r\nAlso all the strategies were refactored to use `libp2p_identity::PeerId` rather than strings and the WASM binding code has been simplified.",
+      "state":"MERGED",
+      "title":"Fixes to `core-strategy`",
+      "updatedAt":"2023-04-03T10:09:29Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4827"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe enum for network health indicator failed to properly display in the Admin UI and logs.\r\n\r\nFixes #4822 \r\n\r\nThis implementation is backwards compatible, i.e. does not force the HOPR Admin UI change:\r\n- [x] enum is correctly parsed as a string in the logs\r\n- [x] the health indicator is properly displayed\r\n\r\n![Screenshot from 2023-04-03 12-13-10](https://user-images.githubusercontent.com/9529609/229481206-79c8e239-f18e-4b25-99f9-401924d725fc.png)\r\n\r\n",
+      "state":"MERGED",
+      "title":"Network health indicator shown as number",
+      "updatedAt":"2023-04-03T11:42:08Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4823"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"Tracking PR of the Bratislava release, DO NOT MERGE\r\nSee https://github.com/hoprnet/hoprnet/issues/4704",
+      "state":"MERGED",
+      "title":"Release Bratislava tracking PR",
+      "updatedAt":"2023-04-11T08:04:52Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4820"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe output of integration tests could be hidden by other failures in test fixtures, this adds a compulsory output from the logs of integration tests, if the integration e2e test fails.\r\n",
+      "state":"MERGED",
+      "title":"Add output to the e2e bash integration tests when it fails",
+      "updatedAt":"2023-04-04T08:38:31Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4817"
+   },
+   {
+      "author":"Teebor-Choka",
+      "body":"## What\r\nThe overall configurability of the HOPRd has been severely extended by the ability to ingest configuration from a YAML configuration file. The configuration layering of the daemon is now 3 fold, with the order of configuration as follows:\r\n- YAML configuration is used as a default and if provided, it must contain the full configuration set for the daemon\r\n- command line arguments allow overriding specific sections of the base configuration\r\n- environment variables add overrides along the command line arguments\r\n\r\nIt is wise an recommended to stick to a single type of configuration, but it is fully possible to create a setup in which a YAML configuration file is loaded, some of its values are overridden by the command line arguments and furthermore some configuration options are taken from an env variable.\r\n\r\n## Design features\r\n* `CliArgs` are a separate entity from the `HoprdConfig` -\u003e it is possible to include only parts of the configuration as CLI arguments/env var arguments\r\n* `HoprdConfig` uses serde serialization and deserialization\r\n* `HoprdConfig` uses `validator` based validation mechanism (on top of the parsing mechanism from the CliArgs)\r\n* The YAML configuration is optional, if no configuration file is supplied, a reasonable default is generated automatically\r\n  * The default represents an invalid configuration - e.g. password and private_key are not generated\r\n* cli arguments are mapped into the configuration using a custom transformation function\r\n* configuration errors are derived from the `thiserror` package\r\n\r\n## Example\r\nPreliminary layout of the configuration file:\r\n```yaml\r\nhost:\r\n  ip: 127.0.0.1\r\n  port: 47462\r\nidentity:\r\n  file: identity\r\n  password: ''\r\n  private_key: ''\r\ndb:\r\n  data: /tmp/db\r\n  init: false\r\n  force_init: false\r\napi:\r\n  enabled: false\r\n  auth: None\r\n  host:\r\n    ip: 127.0.0.1\r\n    port: 1233\r\nstrategy:\r\n  name: null\r\n  max_auto_channels: null\r\n  auto_redeem_tickets: false\r\nheartbeat:\r\n  interval: 0\r\n  threshold: 0\r\n  variance: 0\r\nnetwork:\r\n  announce: false\r\n  allow_local_node_connections: false\r\n  allow_private_node_connections: false\r\n  max_parallel_connections: 0\r\n  network_quality_threshold: 0.0\r\nhealthcheck:\r\n  enabled: false\r\n  host: 127.0.0.1\r\n  port: 0\r\nenvironment: testing\r\nchain:\r\n  provider: null\r\n  check_unrealized_balance: false\r\n  on_chain_confirmations: 0\r\ntest:\r\n  announce_local_addresses: false\r\n  prefer_local_addresses: false\r\n  use_weak_crypto: false\r\n  no_direct_connections: false\r\n  no_webrtc_upgrade: false\r\n  local_mode_stun: false\r\n```\r\n\r\n## Notes\r\nCloses #4742\r\nCloses #4611",
+      "state":"MERGED",
+      "title":"Add YAML configuration as base for HOPRd",
+      "updatedAt":"2023-04-14T14:40:15Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4796"
+   },
+   {
+      "author":"ausias-armesto",
+      "body":"This workflow modifications deploy hoprd nodes when a PR is labeled",
+      "state":"MERGED",
+      "title":"Modify workflow to deploy nodes on PR labeling",
+      "updatedAt":"2023-04-18T20:44:50Z",
+      "url":"https://github.com/hoprnet/hoprnet/pull/4761"
+   }
+]
