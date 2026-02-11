@@ -1,666 +1,618 @@
 [
-   {
-      "author":"robertkiel",
-      "body":"another merge-back",
-      "state":"MERGED",
-      "title":"Merge back release/bratislava #3",
-      "updatedAt":"2023-05-12T17:43:36Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5055"
-   },
-   {
-      "author":"robertkiel",
-      "body":"- Updates README\r\n- cleanup yarn lockfile\r\n- cleanup cargo vendor\r\n",
-      "state":"MERGED",
-      "title":"prepare 1.93.6",
-      "updatedAt":"2023-05-11T13:27:09Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5052"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Increase the limit to make restarts less often.",
-      "state":"MERGED",
-      "title":"Increase memory limit for Avado to 2GB",
-      "updatedAt":"2023-05-11T12:58:17Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5051"
-   },
-   {
-      "author":"robertkiel",
-      "body":"This reverts commit 9f428f86490fc6264aeb34892effe97834e19bdb.",
-      "state":"MERGED",
-      "title":"Revert \"migrate core (#4963)\"",
-      "updatedAt":"2023-05-11T12:45:42Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5050"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"",
-      "state":"MERGED",
-      "title":"Update to docker-compose to Bratislava",
-      "updatedAt":"2023-05-11T12:48:12Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5049"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"",
-      "state":"MERGED",
-      "title":"Remove conflicting dependencies from the test requirements file",
-      "updatedAt":"2023-05-11T09:24:38Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5047"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nPython HOPRd API now lives in a separate repository for easy pip based access.",
-      "state":"MERGED",
-      "title":"Extract python hoprd api into separate repository",
-      "updatedAt":"2023-05-11T09:02:02Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5046"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR improves the following:\r\n- better error handling when parsing Balance\r\n- PublicKey type now supports also non-prefixed deserialized forms (64 bytes)\r\n- adds missing `serialize` TS binding for the PublicKey type \r\n- add unit tests for `Address` type\r\n- add convenience `hash` method to `Hash` type in Rust\r\n\r\nPrerequisite for https://github.com/hoprnet/hoprnet/pull/5039",
-      "state":"MERGED",
-      "title":"Add missing TS binding and small Rust types fixes",
-      "updatedAt":"2023-05-12T06:45:50Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5045"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Simple renaming of methods of the `BinarySerializable` trait to make it compatible with `serde`",
-      "state":"MERGED",
-      "title":"Rename `serialize`/`deserialize` to `to_bytes`/`from_bytes` in the `BinarySerializable` trait",
-      "updatedAt":"2023-05-11T08:08:32Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5044"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR adds various improvements and fixes to `core-types` and `utils-types` crates.\r\n\r\nNamely:\r\n - added unit tests\r\n - added TS bindings for type methods\r\n - added missing functions needed in TS\r\n\r\nThis is cherry-pick (and prerequisite) for #5039 ",
-      "state":"MERGED",
-      "title":"Cherry-pick Rust type improvements",
-      "updatedAt":"2023-05-11T07:11:24Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5043"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Unblock CI https://github.com/hoprnet/hoprnet/actions/runs/4936249533/jobs/8823556354?pr=4882\r\n\r\nError log\r\n```\r\nError: \r\nError accessing local wallet. Did you set a private key, mnemonic or keystore?\r\nRun `cast send --help` or `forge create --help` and use the corresponding CLI\r\nflag to set your key via:\r\n--private-key, --mnemonic-path, --aws, --interactive, --trezor or --ledger.\r\nAlternatively, if you're using a local node with unlocked accounts,\r\nuse the --unlocked flag and either set the `ETH_FROM` environment variable to the address\r\nof the unlocked account you want to use, or provide the --from flag with the address directly.\r\nmake[3]: *** [Makefile:40: anvil-deploy-erc1820] Error 1\r\nmake[3]: Leaving directory '/home/runner/work/hoprnet/hoprnet/packages/ethereum/contracts'\r\nmake[2]: *** [Makefile:55: anvil-deploy-all] Error 2\r\nmake[2]: Leaving directory '/home/runner/work/hoprnet/hoprnet/packages/ethereum/contracts'\r\n23-05-10T11:16:01Z [run-local-anvil] Stop anvil network\r\n```\r\n\r\nThe reason is that foundry requires to have unlocked wallet to send transaction. One of the ways to unlock a wallet is to pass private key with `--private-key`. Given this private-key is a well-known key used in web3 project development, it is safe to pass it as clear text.",
-      "state":"MERGED",
-      "title":"Hotfix: Make known development private key explicit",
-      "updatedAt":"2023-05-11T08:18:51Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5041"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Added `AccountEntry` type to `core-types` crate, because it was missing.\r\nPrerequisite for DB migration to Rust #4543 \r\n\r\nAlso fixes a typo in `acknowledgement` module name in `core-types`",
-      "state":"MERGED",
-      "title":"Add missing AccountEntry type for use in the DB",
-      "updatedAt":"2023-05-10T19:04:39Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5038"
-   },
-   {
-      "author":"robertkiel",
-      "body":"### Tldr\r\n\r\nAdds a patch to a libp2p library used for managing known addresses\r\n\r\n### Current situation\r\n\r\n*Before* adding new addresses to the PeerStore (== the list of known addresses), there is a check whether the size of the addresses is the same.\r\n\r\nIf an address in the list *changes*, the *size* stays the same and thus the entire request is ignored.\r\n\r\n### New behavior\r\n\r\nRemove this check and rather do some additional db queries",
-      "state":"MERGED",
-      "title":"fix libp2p address store",
-      "updatedAt":"2023-05-09T14:51:14Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5037"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe Python API was introduced to facilitate simple interaction with HOPRd using a native Python interface. Since the possible usage of such an API has outgrown the sole test use case, the entire Python wrapper has been moved to a separate packaging directory with proper packaging using `setuptools` in order to allow referencing the new package as a separate requirement from any repository.",
-      "state":"MERGED",
-      "title":"Extract python API into a separate package",
-      "updatedAt":"2023-05-09T09:11:57Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5034"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"- Fix deployment skipping files on vendor by dockerignore\r\n- Improve the logging on metrics",
-      "state":"MERGED",
-      "title":"Fix deployment",
-      "updatedAt":"2023-05-11T12:48:30Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5033"
-   },
-   {
-      "author":"robertkiel",
-      "body":"Ports missing changes from Riga (`1.92.10` to `1.92.12`) to `master`. See #4888 for reference",
-      "state":"MERGED",
-      "title":"forward-port #4714",
-      "updatedAt":"2023-05-04T09:47:37Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5032"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Staging upgrade to 1.93.5",
-      "state":"MERGED",
-      "title":"Staging upgrade Release Bratislava",
-      "updatedAt":"2023-04-28T15:58:01Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5027"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"As in title.",
-      "state":"MERGED",
-      "title":"Remove additional -- in install-toolchain.sh",
-      "updatedAt":"2023-04-28T10:14:57Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5024"
-   },
-   {
-      "author":"tolbrino",
-      "body":"This will prevent circuit connections being created by public relay nodes and also prevent the update of listening addresses in the DHT.\r\n\r\nAlso:\r\n\r\n- Add heartbeat and cleanup to API websocket connections\r\n\r\nRef #4881 \r\n\r\nNote: Ideally we would also disable the use of relay connections for public nodes. But when doing so they do not connect to the DHT and never are able to connect to other nodes in the network. This might be a bug.",
-      "state":"MERGED",
-      "title":"[hotfix/bratislava] connect: Ensure public relay nodes don't create relay connections",
-      "updatedAt":"2023-05-11T09:35:35Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5023"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nRelease upgrade for Bratislava #4.",
-      "state":"MERGED",
-      "title":"Release upgrade bratislava #4",
-      "updatedAt":"2023-04-28T09:26:59Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5021"
-   },
-   {
-      "author":"robertkiel",
-      "body":"`hopr` uses libp2p for peer-to-peer communication. libp2p uses multiformats/Multiaddr to address nodes. Multiaddrs *can* include the PeerId of the destination, e.g.\r\n\r\n```\r\n/p2p/16Uiu2HAkwecC3n6BG3odw4WC3PjEPv36HyHsHE4dxGotXWgXynrh/p2p-circuit/p2p/16Uiu2HAmEcAW62hrT2Rd19SFLJvx7ZxvtuDFFf8pbUwMRZx4xyfv\r\n```\r\n\r\nbut they don't need to since the destination peerId is already known when dialing a peer. this is why they are stored and transferred as:\r\n\r\n```\r\n/p2p/16Uiu2HAkwecC3n6BG3odw4WC3PjEPv36HyHsHE4dxGotXWgXynrh/p2p-circuit\r\n``` \r\n\r\nunfortunately, there is no *coercing* method foreseen to automatically convert *long* addresses into *short* addresses.\r\n\r\nThis PR adds a `yarn patch` to add the missing coercion from *long* addresses to *short* address when pushing address information to other peers.",
-      "state":"MERGED",
-      "title":"coerce libp2p addrs",
-      "updatedAt":"2023-04-28T20:44:14Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5020"
-   },
-   {
-      "author":"robertkiel",
-      "body":"Adds mock for a missing method that made the unit test break after #5004 \r\n\r\nre https://github.com/hoprnet/hoprnet/actions/runs/4820700047/jobs/8585558510?pr=5006",
-      "state":"MERGED",
-      "title":"fix unit test suite",
-      "updatedAt":"2023-04-27T15:27:39Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5013"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nAdd serde support to basic core types used in the DB interface.\r\n\r\n## Info\r\n`BinarySerializable` could be transformed into a `serde` `Serializer` and `Deserializer`.\r\n\r\nRelates to #4543 \r\nBlocks #4994 ",
-      "state":"MERGED",
-      "title":"Extend basic types to support serialization and deserialization",
-      "updatedAt":"2023-04-28T06:16:37Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5012"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Similar fuzzy test may fail in master, as in `staging/bratislava`, see https://github.com/hoprnet/hoprnet/actions/runs/4819865662\r\n\r\nPort fixes in https://github.com/hoprnet/hoprnet/pull/5006 to master\r\n\r\nFixes tests due to changes in foundry https://github.com/foundry-rs/foundry/pull/4827",
-      "state":"MERGED",
-      "title":"hotfix fuzzy test",
-      "updatedAt":"2023-05-05T13:51:07Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5011"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Porting https://github.com/hoprnet/hoprnet/pull/4907 and https://github.com/hoprnet/hoprnet/pull/4906\r\n\r\n- add stake season 7 contracts and test\r\n- update contracts-addresses.json and protocol-config.json",
-      "state":"MERGED",
-      "title":"Update Stake season 7 contract to Bratislave release",
-      "updatedAt":"2023-04-27T15:30:03Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5006"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"Disable docker build on every PR push until we provide a solution for running such amount of jobs.",
-      "state":"MERGED",
-      "title":"Disable docker build",
-      "updatedAt":"2023-04-27T09:39:25Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5005"
-   },
-   {
-      "author":"robertkiel",
-      "body":"Enhancements to the dialing logic to make its debugging easier\r\n\r\n- when outputting known addresses, sort them in the order in which they are dialed\r\n- add connection identifiers whenever possible to debug logs\r\n- when establishing a connection, add the utilized Multiaddr to the debug logs",
-      "state":"MERGED",
-      "title":"enhance dialing logs",
-      "updatedAt":"2023-04-27T08:35:59Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/5004"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR add some metrics relevant to RPCh failed request debugging.\r\n\r\nIt also adds a regex distinguisher of raw RPCh messages in order to log them in hoprd logs for further processing.",
-      "state":"MERGED",
-      "title":"Add metrics \u0026 logs relevant for RPCh debugging",
-      "updatedAt":"2023-04-27T08:37:33Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4995"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Some minor stuff spotted mostly by a linter.\r\n\r\nFeel free to improve/change.",
-      "state":"MERGED",
-      "title":"Small code-style improvements to `hopli`",
-      "updatedAt":"2023-04-26T09:08:25Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4975"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR is a prerequisite for #4834, #4885  and #4706.\r\n\r\nIt introduces the following new types required by the DB:\r\n- `Acknowledgment`\r\n- `AcknowledgedTicket`\r\n- `UnacknowledgedTicket`\r\n- `AcknowledgementChallenge`\r\n- `PendingAcknowledgement`\r\n\r\nThere are also many cryptographic optimizations, namely:\r\n\r\n- `sample_group_element` is done properly via `hash_to_field`\r\n- Abstraction of digest-like types: `SimpleDigest`, `SimpleMac`, `EthDigest`\r\n- Zero-copy options for PRP transformation\r\n- `types` module in `core-crypto` has been refactored to better abstract out elliptic curve artifacts\r\n- `shared_keys` module has better abstraction from the elliptic curve artifacts \r\n- `Response` type has been moved from `core-types` to `core-crypto::types` due to its reliance on cryptographic operations\r\n",
-      "state":"MERGED",
-      "title":"Introduce new types \u0026 optimize cryptographic code",
-      "updatedAt":"2023-04-26T13:45:01Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4974"
-   },
-   {
-      "author":"robertkiel",
-      "body":"further migrate heartbeat and network peers functionality to Rust\r\n\r\n- `core_network` becomes a leaf module\r\n- direct callbacks to libp2p protocol handler\r\n- direct invocation of dialHelper functionality in `utils`\r\n- fewer JS-exposed APIs\r\n- **safe** implementation of JS duplex stream to Rust DuplexStream (`futures::Sink + futures::Stream`)",
-      "state":"MERGED",
-      "title":"migrate core",
-      "updatedAt":"2023-05-02T10:32:57Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4963"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"As in title. The `build-avado.sh` script runs with `DRY_RUN=false` per default.\r\n\r\nhttps://github.com/hoprnet/hoprnet/actions/runs/4784602598/jobs/8507097956",
-      "state":"MERGED",
-      "title":"Set default value for DRY_RUN env variable in Avado build",
-      "updatedAt":"2023-04-24T12:36:03Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4960"
-   },
-   {
-      "author":"robertkiel",
-      "body":"adds missing changelog from #4958 ",
-      "state":"MERGED",
-      "title":"update changelog",
-      "updatedAt":"2023-04-24T09:51:48Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4959"
-   },
-   {
-      "author":"robertkiel",
-      "body":"*Before* announcing addresses to the DHT, `js-libp2p` makes use of an internal cache that prevents the PeerRecordUpdater from using the latest addresses.\r\n\r\nThe PeerRecordUpdater\r\n\r\nhttps://github.com/libp2p/js-libp2p/blob/v0.37.3/src/peer-record-updater.ts#L25\r\n\r\nThe cache in libp2p AddressManager\r\n\r\nhttps://github.com/libp2p/js-libp2p/blob/v0.37.3/src/address-manager/index.ts#L107",
-      "state":"MERGED",
-      "title":"wipe address manager cache",
-      "updatedAt":"2023-04-24T09:23:23Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4958"
-   },
-   {
-      "author":"tolbrino",
-      "body":"Dead connections are not properly cleaned from the libp2p connection managers internal data. This PR tries to ensure that this happens, such that these entries are properly freed.\r\n\r\n```\r\n2023-04-22T21:34:59.585Z hopr-core:libp2p dead connections to 16Uiu2HAmQ3CgoDqZE4eub44nZ7RUnNTqd1eTsk1vZxUhA5uaa97i [ 'abgzy41682198229621', '58xi1c1682198490514', '9rm2d01682198736128' ]\r\n```",
-      "state":"MERGED",
-      "title":"Enforce closing and clean-up of libp2p2 connections",
-      "updatedAt":"2023-04-24T09:29:33Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4957"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR fixes the `memmon` introduced in #4898 . \r\nThe reason for `memmon` failing to monitor was missing `ps` command in the HOPRd Avado docker image.\r\n\r\nIt also introduces the `DRY_RUN` flag that can be used with `build-avado.sh` script to only generate the `docker-compose.yml` file without building the actual Avado image. This is useful for testing.\r\n\r\nThe order of `upstream_version` and `api_token` in the `build-avado.sh` script was also swapped for convenience.\n\nRefs #4854",
-      "state":"MERGED",
-      "title":"Fix `memmon` to properly monitor memory usage of HOPRd on Avado",
-      "updatedAt":"2023-04-21T09:17:04Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4944"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nBasic merge-back update for the bratislava release.\r\n\r\nRefs #4704 ",
-      "state":"MERGED",
-      "title":"Upgrade staging/bratislava from the current release/bratislava branch",
-      "updatedAt":"2023-04-20T12:22:04Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4939"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nRegular staging merge to `release/bratislava`.\r\n\r\nRefs #4704 ",
-      "state":"MERGED",
-      "title":"Release upgrade bratislava #3",
-      "updatedAt":"2023-04-20T09:51:09Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4937"
-   },
-   {
-      "author":"SCBuergel",
-      "body":"",
-      "state":"MERGED",
-      "title":"renamed Safes, removed double entry",
-      "updatedAt":"2023-04-20T09:15:35Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4933"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"- Fixing when docker builds should trigger",
-      "state":"MERGED",
-      "title":"Fixing docker build triggers",
-      "updatedAt":"2023-04-19T16:27:32Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4927"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe histogram metrics for heartbeat were cancelled instead of recorded.\r\n",
-      "state":"MERGED",
-      "title":"Fix heartbeat metrics",
-      "updatedAt":"2023-04-19T12:09:07Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4919"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR adds a pruning mechanism to the Relay code.\r\nThe pruning mechanism sends low-level ping to all the relay connections (both source and destination) and if they do not respond within time (currently 300 ms), the relay will evict that connection from the registry.\r\n\r\nThis PR also adds new metric `connect_gauge_evicted_relayed_conns` to monitor the eviction rate of the inactive connections from the relay state.\r\n\r\nThe keep-alive rounds are done periodically in a random interval between 15 to 35 seconds.\r\n\r\nAs a follow-up, the keep-alive mechanism should be updated later to work similarly as HOPR protocol heartbeats.",
-      "state":"MERGED",
-      "title":"Remove inactive relay connections during the relay's keep-alive rounds",
-      "updatedAt":"2023-04-19T16:11:17Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4916"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\n`ruff` is extremely fast and can detect almost all python lint rules, therefore is a welcome addition to the stack.",
-      "state":"MERGED",
-      "title":"Add ruff linter for python code",
-      "updatedAt":"2023-04-19T05:53:39Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4915"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nFix cachix install on the `master` branch.",
-      "state":"MERGED",
-      "title":"Fix cachix install using nix",
-      "updatedAt":"2023-04-18T21:21:16Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4914"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nFix cachix nix install by updating the github action.",
-      "state":"MERGED",
-      "title":"Fix cachix install",
-      "updatedAt":"2023-04-18T20:05:13Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4913"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Fixes the bug of ever-growing number of relayed connections on a relay node.\r\n\r\nFixes https://github.com/hoprnet/hoprnet/issues/4507",
-      "state":"MERGED",
-      "title":"Add RelayState cleanup and set a limit of maximum relayed connections to 2000",
-      "updatedAt":"2023-04-18T17:55:41Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4912"
-   },
-   {
-      "author":"tolbrino",
-      "body":"Made externref work.",
-      "state":"MERGED",
-      "title":"Fix wasm externref configuration",
-      "updatedAt":"2023-04-18T13:43:54Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4911"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nExperimental PR that adds extern refs on top of the weak refs.\r\n\r\n## Other\r\nRelates to #4908 and #4909",
-      "state":"MERGED",
-      "title":"Experimental - port weak refs together with extern refs",
-      "updatedAt":"2023-04-18T13:47:34Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4910"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"See #4908 for an extended description.",
-      "state":"MERGED",
-      "title":"Port weak ref wasm bindgen builds to bratislava",
-      "updatedAt":"2023-04-18T14:34:11Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4909"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"**DO NO MERGE** until the S7 starts (April 26th 2pm CET), as this will change the `protocol-config.json` file\r\nUpdate the `contracts-addresses.json` as well as `protocol-config.json` file",
-      "state":"MERGED",
-      "title":"Update staking s7 contract addresses",
-      "updatedAt":"2023-04-26T12:01:00Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4907"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Include staking season 7 contracts https://github.com/hoprnet/hopr-devrel/issues/326\r\nThis PR is save to merge. The update to `protocol-config` is in a separate PR https://github.com/hoprnet/hoprnet/pull/4907",
-      "state":"MERGED",
-      "title":"Staking Season 7 contracts",
-      "updatedAt":"2023-04-26T12:00:50Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4906"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe WebRTC change did not appear to affect the daemon instability.",
-      "state":"MERGED",
-      "title":"Revert webrtc change",
-      "updatedAt":"2023-04-17T06:52:03Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4901"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Installs the `superlance` plugin for `supervisord` in the HOPR Avado image and uses `memmon` tool to monitor memory limit of the `hoprd` application. \r\nThe limit is set to 1GB.\r\n\r\nFixes #4854",
-      "state":"MERGED",
-      "title":"[hotfix/bratislava] Use superlance to monitor hoprd memory usage",
-      "updatedAt":"2023-04-17T11:23:26Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4898"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\n- [x] Update Rust to the latest stable release [1.67.1](https://github.com/rust-lang/rust/blob/master/RELEASES.md)\r\n- [x] Minor stylistic fixes to the shell.nix configuration",
-      "state":"MERGED",
-      "title":"Update the base version of Rust",
-      "updatedAt":"2023-04-17T06:53:50Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4897"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Update staging after releasing 1.93.1",
-      "state":"MERGED",
-      "title":"Staging upgrade bratislava",
-      "updatedAt":"2023-04-17T15:27:41Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4896"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"release `1.93.1`",
-      "state":"MERGED",
-      "title":"Release upgrade bratislava/v1.93.1",
-      "updatedAt":"2023-04-14T15:11:27Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4895"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Closes https://github.com/hoprnet/hoprnet/issues/4836 https://github.com/hoprnet/hoprnet/issues/4826\r\nPorted changes from https://github.com/hoprnet/hoprnet/pull/4886\r\n\r\n- Removed most dependancies on `ethers-rs`, except for uint256 parsing `use ethers::{types::U256,utils::parse_units}`\r\n- Turn `faucet` script to funding to a target amount of tokens. This command is idempotent.\r\n- Add `initialize-node` command to stake + register + fund an identity in an express way\r\n```\r\nPRIVATE_KEY=\u003cbank_private_key\u003e \\\r\nhopli initialize-node --environment-name anvil-localhost \\\r\n    --identity-directory \"/tmp\" \\\r\n    --password-path \"/tmp/.pwd\" \\\r\n    --hopr-amount 1 --native-amount 0.1 \\\r\n    --contracts-root \"../ethereum/contracts\"\r\n```\r\n- Extend `register-in-network-registry` to accept identity files\r\n- Replace `read_identities` function to return `NodeIdentity` struct which contains \"peer_id\" and \"ethereum_address\"\r\n- Add `to_checksum` function in `core-crypto` crate to return a checksumed address string.\r\n- Add `LocalIdentityArgs`, which accepts `--identity-from-path` along with `--identity-directory` for most of the cases. The only exception is in creating identity files.",
-      "state":"MERGED",
-      "title":"Extend hopli",
-      "updatedAt":"2023-04-21T10:20:36Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4894"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nFix cachix to have working builds.",
-      "state":"MERGED",
-      "title":"Fix cachix",
-      "updatedAt":"2023-04-14T10:05:22Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4893"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nReturns the wrtc version used in the release Riga, drops support for Apple Sillicon.\r\n\r\nNecessary due to an increased amount of failed connections causing restarts.\r\n\r\n## Other\r\nLikely will fix #4881 to Riga behavior.",
-      "state":"MERGED",
-      "title":"Return the Riga version of webRTC",
-      "updatedAt":"2023-04-14T11:00:13Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4892"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nPRs are failing the lint because the master branch contains incorrect formatting.",
-      "state":"MERGED",
-      "title":"Fix broken formatting",
-      "updatedAt":"2023-04-14T09:41:49Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4891"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nFix CI builds that use cachix by ignoring the errors.",
-      "state":"MERGED",
-      "title":"Ignore errors if cachix fails",
-      "updatedAt":"2023-04-13T18:59:41Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4889"
-   },
-   {
-      "author":"robertkiel",
-      "body":"Forward-ports left changes in `riga` release to `bratislava`. See commit https://github.com/hoprnet/hoprnet/commit/ee9709a19ab98afb200f1b33a46bccc7597279d5\r\n\r\n----\r\n\r\nList of squashed commits\r\n\r\n* enhance address sorting (#4684)\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.11-next.1\r\n\r\n* Docker: expose udp ports (#4686)\r\n\r\n* change Dockerfile and docker run commands\r\n\r\n* remove linting\r\n\r\n* remove linting\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.11-next.2\r\n\r\n* enhance dht and libp2p config (#4685)\r\n\r\n* enhance dht and libp2p config\r\n\r\n* add CHANGELOG entries\r\n\r\n* incorporate feedback\r\n\r\n* restore previous protocols\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.12-next.0\r\n\r\n* Fix NAT detection when running in GCP (#4692)\r\n\r\n* enhance dht and libp2p config\r\n\r\n* add CHANGELOG entries\r\n\r\n* incorporate feedback\r\n\r\n* restore previous protocols\r\n\r\n* fix gcp NAT detection\r\n\r\n* add changelog entry\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.12-next.1\r\n\r\n* use native hopr STUN servers (#4703)\r\n\r\n* chore(release): update smart contract deployments\r\n\r\n* chore(release): publish 1.92.12-next.2\r\n\r\n---------",
-      "state":"MERGED",
-      "title":"port: Release update riga/v1.92.12 (#4714)",
-      "updatedAt":"2023-04-14T06:53:31Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4888"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\n- [x] Add stress test to verify that a larger number of send message queires go through",
-      "state":"MERGED",
-      "title":"Add stress test for send message",
-      "updatedAt":"2023-04-14T12:36:51Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4887"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\n- [x] Wrap existing DB implementation with a Rust-JS wrapper\r\n- [x] Prepare tests for the migrated Rust wrappers\r\n- [x] Bind both JS and Rust implementations to use the same base LevelDb API\r\n- [x] Remove public key prefix from the DB keys\r\n\r\n## Other\r\nBuilds base for #4543",
-      "state":"MERGED",
-      "title":"Create DB functionality shim in Rust",
-      "updatedAt":"2023-04-27T08:01:55Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4885"
-   },
-   {
-      "author":"tolbrino",
-      "body":"Fixes #4646\r\n\r\nThis PR fixes locations of some log files used in the smoke tests and adds an additional log file which can be tailed during a running smoke tests.\r\n\r\nTest coverage of the send message functionality is added as a smoke test.",
-      "state":"MERGED",
-      "title":"api: Add send message over web socket support",
-      "updatedAt":"2023-05-10T15:04:36Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4882"
-   },
-   {
-      "author":"QYuQianchen",
-      "body":"Fix similar issues (https://github.com/hoprnet/hoprnet/actions/runs/4628689421) in runners that's been fixed in https://github.com/hoprnet/hoprnet/pull/4833",
-      "state":"MERGED",
-      "title":"Port changes in PR#4833 to release Bratislava to unblock CICD",
-      "updatedAt":"2023-04-07T12:35:25Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4880"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nA merge back of the `release/bratislava` branch into the `master` branch",
-      "state":"MERGED",
-      "title":"Merge back release/bratislava #2",
-      "updatedAt":"2023-04-11T08:04:49Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4876"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\n- [x] First release upgrade for `bratislava` based on the `staging/bratislava` branch\r\n\r\n",
-      "state":"MERGED",
-      "title":"Release upgrade bratislava",
-      "updatedAt":"2023-04-06T12:09:02Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4873"
-   },
-   {
-      "author":"tolbrino",
-      "body":"Refs #4866 ",
-      "state":"MERGED",
-      "title":"[hotfix/bratislava] Added mitigation for connection leakage to prevent DHT and p2p connection failures",
-      "updatedAt":"2023-04-05T15:38:29Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4870"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe scopeguard caused the counters to be moved, thereby always leaving an empty default 0 counter behind it.\r\n\r\nFixed to make sure the timer always gets updated inside a correct object.\r\n\r\nRefs #4600 ",
-      "state":"MERGED",
-      "title":"[HOTFIX] Ping metrics not being propagated correctly",
-      "updatedAt":"2023-04-07T12:44:07Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4867"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nWhilest only using the `libp2p::PeerId`, the entire dependency on libp2p is unnecessary and therefore replaced with `libp2p_identity`.",
-      "state":"MERGED",
-      "title":"Optimize core-network dependencies",
-      "updatedAt":"2023-04-05T12:34:51Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4865"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"Updated steps for publishing a Dappnode release for clarity.",
-      "state":"MERGED",
-      "title":"Updated Dappnode publish guide",
-      "updatedAt":"2023-04-05T07:28:13Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4858"
-   },
-   {
-      "author":"tolbrino",
-      "body":"Also:\r\n\r\n- added use of larger CI runners for a subset of workflows\r\n- fixed some CI workflow inconsistencies\r\n- added CI workflow for cache cleanup after PR merge",
-      "state":"MERGED",
-      "title":"python: Add black formatter",
-      "updatedAt":"2023-04-05T08:19:21Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4841"
-   },
-   {
-      "author":"tolbrino",
-      "body":"Fixes CI issues:\r\n\r\nhttps://github.com/hoprnet/hoprnet/actions/runs/4597636347/jobs/8120603806\r\nhttps://github.com/hoprnet/hoprnet/actions/runs/4576997352/jobs/8082895375",
-      "state":"MERGED",
-      "title":"ci: Fix invocation of test runs",
-      "updatedAt":"2023-04-03T19:03:43Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4833"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe docs were missing `use` clauses causing the docs to fail tests.",
-      "state":"MERGED",
-      "title":"Fix failing relay docs tests",
-      "updatedAt":"2023-04-03T13:03:27Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4831"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"This is the first merge back from Bratislava release to master\r\nOnly changes versioning schema",
-      "state":"MERGED",
-      "title":"Merge back release/bratislava #1",
-      "updatedAt":"2023-04-13T11:24:40Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4830"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR introduces the following  changes:\r\n\r\n## New features\r\n\r\n### Metadata in `PeerStatus`\r\nEach entry (`PeerStatus`) in the Heartbeat peer registry (`Network`) now contains a dictionary of per-peer metadata. This an arbitrary dictionary of string-based key-value pairs. It starts as empty (or can be pre-populated by using `add_with_metadata` method when new peer entry is added), but can be updated on each `update_with_metadata` call - the changes are merged (upserted).\r\n\r\n### Added `protocol_version` metadata\r\nThe ping mechanism is enhanced to extract the current HOPR protocol version from the ping sub-protocol transport layer. This extracted value is then used as metadata for the respective `PeerStatus` entry in the Heartbeat registry. This effectively adds the reported protocol version information into the peer registry, from where it could be later queried.\r\n\r\n### The `reportedVersion` exposed in the `v2/node/ping` and `v2/node/peers` API endpoints\r\nA new entry `reportedVersion` entry is added to the HTTP response body of the Ping API endpoint. The value contains the latest protocol version queried from the heartbeat peer registry (where it's been updated after the ping).\r\n\r\n## Refactoring\r\n\r\n### Automatic serialization method\r\nA new trait `AutoBinarySerializable` has been introduced. The trait poses as a default implementation of the `BinarySerializable` trait that has been introduced earlier. The default implementation uses `bincode` binary format to perform automatic serialization/deserialization of the type that implements `AutoBinarySerializable`, instead of having to implement that manually if only `BinarySerializable` trait has been implemented.\r\n\r\nWhen a developer is about to introduce a new type `X` that needs serialization, they can decide whether to use either:\r\n- an effortless serialization strategy: `impl AutoBinarySerializable for X { }` \r\n- or write their own serialization format: `impl BinarySerializable for X { ... }`\r\n\r\nThe `AutoBinarySerializable` trait is meant to abstract out the underlying binary format, so e.g. `bincode` can be replaced in the future with a different one if needed (`minicbor`, `protobuf`...).\r\n\r\n### Ping sub-protocol enhancements\r\nThe ping/pong protocol messages are now implemented as types using the `ControlMessage` sub-protocol. This already uses the newly introduced `AutoBinarySerializable` strategy and relevant cryptographic code from the `core-crypto` crate. Due to backwards compatibility, a new `compat-ping` feature has been introduced to `core-network` crate (enabled by default), so that the ping/pong messages are compatible with older HOPR versions when serialized/deserialized. The `compat-ping` feature will be turned off in the future backwards incompatible release. This opens up the possibility of extending the `ControlMessage` sub-protocol in the future, so it can carry more data (e.g. to report locally perceived peer qualities in order to allow https://github.com/hoprnet/hoprnet/issues/4720).\r\n\r\nCloses https://github.com/hoprnet/hoprnet/issues/4547",
-      "state":"MERGED",
-      "title":"Introduce version information into Ping sub-protocol ",
-      "updatedAt":"2023-04-03T17:38:03Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4828"
-   },
-   {
-      "author":"NumberFour8",
-      "body":"This PR brings the following fixes to `core-strategy`, namely to the Promiscuous strategy:\r\n\r\n- a new internal setting allows the strategy to close channels (even if with high-quality peer) if the maximum number of channels (either manual or computed automatically from the network size) has been exceeded. This setting is enabled by default, so the strategy will be aggressive in enforcing the maximum number of opened channels. No distinction is done between channels opened manually or via the strategy.\r\n- an integer overflow possibility has been fixed, which sometimes caused a more than the allowed number of channels to be opened (fixes https://github.com/hoprnet/hoprnet/issues/4776)\r\n\r\nAlso all the strategies were refactored to use `libp2p_identity::PeerId` rather than strings and the WASM binding code has been simplified.",
-      "state":"MERGED",
-      "title":"Fixes to `core-strategy`",
-      "updatedAt":"2023-04-03T10:09:29Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4827"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe enum for network health indicator failed to properly display in the Admin UI and logs.\r\n\r\nFixes #4822 \r\n\r\nThis implementation is backwards compatible, i.e. does not force the HOPR Admin UI change:\r\n- [x] enum is correctly parsed as a string in the logs\r\n- [x] the health indicator is properly displayed\r\n\r\n![Screenshot from 2023-04-03 12-13-10](https://user-images.githubusercontent.com/9529609/229481206-79c8e239-f18e-4b25-99f9-401924d725fc.png)\r\n\r\n",
-      "state":"MERGED",
-      "title":"Network health indicator shown as number",
-      "updatedAt":"2023-04-03T11:42:08Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4823"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"Tracking PR of the Bratislava release, DO NOT MERGE\r\nSee https://github.com/hoprnet/hoprnet/issues/4704",
-      "state":"MERGED",
-      "title":"Release Bratislava tracking PR",
-      "updatedAt":"2023-04-11T08:04:52Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4820"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe output of integration tests could be hidden by other failures in test fixtures, this adds a compulsory output from the logs of integration tests, if the integration e2e test fails.\r\n",
-      "state":"MERGED",
-      "title":"Add output to the e2e bash integration tests when it fails",
-      "updatedAt":"2023-04-04T08:38:31Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4817"
-   },
-   {
-      "author":"Teebor-Choka",
-      "body":"## What\r\nThe overall configurability of the HOPRd has been severely extended by the ability to ingest configuration from a YAML configuration file. The configuration layering of the daemon is now 3 fold, with the order of configuration as follows:\r\n- YAML configuration is used as a default and if provided, it must contain the full configuration set for the daemon\r\n- command line arguments allow overriding specific sections of the base configuration\r\n- environment variables add overrides along the command line arguments\r\n\r\nIt is wise an recommended to stick to a single type of configuration, but it is fully possible to create a setup in which a YAML configuration file is loaded, some of its values are overridden by the command line arguments and furthermore some configuration options are taken from an env variable.\r\n\r\n## Design features\r\n* `CliArgs` are a separate entity from the `HoprdConfig` -\u003e it is possible to include only parts of the configuration as CLI arguments/env var arguments\r\n* `HoprdConfig` uses serde serialization and deserialization\r\n* `HoprdConfig` uses `validator` based validation mechanism (on top of the parsing mechanism from the CliArgs)\r\n* The YAML configuration is optional, if no configuration file is supplied, a reasonable default is generated automatically\r\n  * The default represents an invalid configuration - e.g. password and private_key are not generated\r\n* cli arguments are mapped into the configuration using a custom transformation function\r\n* configuration errors are derived from the `thiserror` package\r\n\r\n## Example\r\nPreliminary layout of the configuration file:\r\n```yaml\r\nhost:\r\n  ip: 127.0.0.1\r\n  port: 47462\r\nidentity:\r\n  file: identity\r\n  password: ''\r\n  private_key: ''\r\ndb:\r\n  data: /tmp/db\r\n  init: false\r\n  force_init: false\r\napi:\r\n  enabled: false\r\n  auth: None\r\n  host:\r\n    ip: 127.0.0.1\r\n    port: 1233\r\nstrategy:\r\n  name: null\r\n  max_auto_channels: null\r\n  auto_redeem_tickets: false\r\nheartbeat:\r\n  interval: 0\r\n  threshold: 0\r\n  variance: 0\r\nnetwork:\r\n  announce: false\r\n  allow_local_node_connections: false\r\n  allow_private_node_connections: false\r\n  max_parallel_connections: 0\r\n  network_quality_threshold: 0.0\r\nhealthcheck:\r\n  enabled: false\r\n  host: 127.0.0.1\r\n  port: 0\r\nenvironment: testing\r\nchain:\r\n  provider: null\r\n  check_unrealized_balance: false\r\n  on_chain_confirmations: 0\r\ntest:\r\n  announce_local_addresses: false\r\n  prefer_local_addresses: false\r\n  use_weak_crypto: false\r\n  no_direct_connections: false\r\n  no_webrtc_upgrade: false\r\n  local_mode_stun: false\r\n```\r\n\r\n## Notes\r\nCloses #4742\r\nCloses #4611",
-      "state":"MERGED",
-      "title":"Add YAML configuration as base for HOPRd",
-      "updatedAt":"2023-04-14T14:40:15Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4796"
-   },
-   {
-      "author":"ausias-armesto",
-      "body":"This workflow modifications deploy hoprd nodes when a PR is labeled",
-      "state":"MERGED",
-      "title":"Modify workflow to deploy nodes on PR labeling",
-      "updatedAt":"2023-04-18T20:44:50Z",
-      "url":"https://github.com/hoprnet/hoprnet/pull/4761"
-   }
+  {
+    "author": "NumberFour8",
+    "body": "The Connector sync process must use an Open channel filter, because the Graph subscription feeds only opened channels. Before the fix, it could lead to inability to sync the node, because closed channels were counted, but not fed via the subscription.\r\n\r\nIt also makes percentage of total sync configurable.\r\n\r\nNeeds https://github.com/hoprnet/blokli/issues/218 to be fixed, in order to function.",
+    "state": "MERGED",
+    "title": "fix: use Opened channel filter on Connector sync",
+    "updatedAt": "2026-02-09T11:56:27Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7790"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'flake-parts':\n    'github:hercules-ci/flake-parts/80daad04eddbbf5a4d883996a73f3f542fa437ac?narHash=sha256-PVvu7OqHBGWN16zSi6tEmPwwHQ4rLPU9Plvs8/1TUBY%3D' (2026-01-11)\n  → 'github:hercules-ci/flake-parts/57928607ea566b5db3ad13af0e57e921e6b12381?narHash=sha256-AnYjnFWgS49RlqX7LrC4uA%2BsCCDBj0Ry/WOJ5XWAsa0%3D' (2026-02-02)\n• Updated input 'hopli':\n    'github:hoprnet/hopli/51af18ec7863a5bae6f1ba09557331cc3b100941?narHash=sha256-zKKwa1nUgdh2zcK7JNnC4no80R/ipuakf9FkLYFPARU%3D' (2026-01-25)\n  → 'github:hoprnet/hopli/624e241b7b8ae57496271b6b2ff6bc37bb99070f?narHash=sha256-rwAaU2M4pH4Kb2mNIu1fUF%2BW2SnE6%2Bn6hXtELgVoP/4%3D' (2026-02-02)\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/41e216c0ca66c83b12ab7a98cc326b5db01db646?narHash=sha256-I7Lmgj3owOTBGuauy9FL6qdpeK2umDoe07lM4V%2BPnyA%3D' (2026-01-31)\n  → 'github:NixOS/nixpkgs/d27b6a595fcd6483404835a7feaf5d0c040581c0?narHash=sha256-o7q1AGBIhTNzFUDsmIppb22lJTrVszQEOm143CeS/ac%3D' (2026-02-07)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/cde0926ad2d7745974618ee2314d3331c47c93f3?narHash=sha256-CFlClzXoMZa1K959/X0ycUrtXVNjQOW1k1nLPIg9Zmo%3D' (2026-01-31)\n  → 'github:NixOS/nixpkgs/42c103b34b6ae7f7db1e1901891cc0b74690fb09?narHash=sha256-1u6n6%2BMDtk4RY%2B31hafa0irZWh43pTDoq0JBSi3othA%3D' (2026-02-07)\n• Updated input 'pre-commit':\n    'github:cachix/git-hooks.nix/a1ef738813b15cf8ec759bdff5761b027e3e1d23?narHash=sha256-Efs3VUPelRduf3PpfPP2ovEB4CXT7vHf8W%2Bxc49RL/U%3D' (2026-01-22)\n  → 'github:cachix/git-hooks.nix/a8ca480175326551d6c4121498316261cbb5b260?narHash=sha256-Fok2AmefgVA0%2Beprw2NDwqKkPGEI5wvR%2BtwiZagBvrg%3D' (2026-02-01)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/a1d32c90c8a4ea43e9586b7e5894c179d5747425?narHash=sha256-zmnvRUm15QrlKH0V1BZoiT3U%2BQ%2Btr%2BP5Osi8qgtL9fY%3D' (2026-01-31)\n  → 'github:oxalica/rust-overlay/9922ff9f99a6436756cbe6f5d11f9c3630e58cf0?narHash=sha256-IaiqGwmLBrR0z67t/oaS6GIFxv9V8mDY7dBTuYVTbKY%3D' (2026-02-07)\n• Updated input 'treefmt-nix':\n    'github:numtide/treefmt-nix/28b19c5844cc6e2257801d43f2772a4b4c050a1b?narHash=sha256-8aAYwyVzSSwIhP2glDhw/G0i5%2BwOrren3v6WmxkVonM%3D' (2026-01-29)\n  → 'github:numtide/treefmt-nix/337a4fe074be1042a35086f15481d763b8ddc0e7?narHash=sha256-wQ6NJSuFqAEmIg2VMnLdCnUc0b7vslUohqqGGD%2BFyxk%3D' (2026-02-04)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-02-08T17:09:52Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7788"
+  },
+  {
+    "author": "tolbrino",
+    "body": "Combines #7785 and #7786 \r\n\r\n- Upgraded time dependency to fix vulnerability\r\n- Refactored rayon helper functions to be more resilient and added metrics for better inspection\r\n- Moved signing operations off rayon pool\r\n- Added additional metrics and trace logs to packet processing pipeline to improve inspection\r\n- Fixed bug in rayon offloading in cache getter\r\n- Fixed bug in chain info cache which was blocking due to blokli call\r\n- Fixed race-condition in get calls in tempdb\r\n- Added concurrency limit to packet pipeline",
+    "state": "MERGED",
+    "title": "feat(hopr-lib): Improve packet processing concurrency and rayon efficiency",
+    "updatedAt": "2026-02-07T20:32:35Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7787"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "Add concurrency limit on incoming/outgoing packet processing.\r\n\r\nDefault is set to 8 times the number of CPU cores.\r\nBoth limits can be overridden by the new `HOPR_INTERNAL_IN_PACKET_PIPELINE_CONCURRENCY` and `HOPR_INTERNAL_OUT_PACKET_PIPELINE_CONCURRENCY` variables.",
+    "state": "MERGED",
+    "title": "feat: add concurrency limit to packet pipeline",
+    "updatedAt": "2026-02-06T20:38:25Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7786"
+  },
+  {
+    "author": "mjadach-iv",
+    "body": "Make the API filter out the peers that we do not know the addresses for in the connected array returned by the node/peers",
+    "state": "MERGED",
+    "title": "fix(hoprd): In the peers api call, in the connected array - return only connected peers",
+    "updatedAt": "2026-02-05T19:38:46Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7784"
+  },
+  {
+    "author": "esterlus",
+    "body": "This slight difference will weed out a potential edge case regarding channel funding on the edge client",
+    "state": "MERGED",
+    "title": "fix(autofunding): switch autofunding strategy to less than or equal",
+    "updatedAt": "2026-02-05T08:32:45Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7783"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "This pull request refines the HOPR node startup sequence by introducing more granular state transitions and improving logging for each initialization step. The changes enhance the ability to track node progress in detail, which benefits UI feedback and debugging. Additionally, there are dependency updates and minor code cleanups.\r\n\r\n**Node Initialization State Improvements**\r\n\r\n* Expanded the `HoprState` enum in `hopr/hopr-lib/src/state.rs` to include detailed, step-by-step states for the node lifecycle, each with descriptive strings suitable for UI display. The enum now covers all major initialization phases, such as waiting for funds, checking balance, validating network configuration, subscribing to announcements, registering Safe, announcing the node, awaiting key binding, initializing services, running, and terminated.\r\n* Updated `hopr/hopr-lib/src/lib.rs` to set the new granular states at the appropriate points during node startup, ensuring accurate progress tracking. [[1]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R351) [[2]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4L363-R364) [[3]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R382-R383) [[4]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R443-R445) [[5]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R477) [[6]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R517-R518) [[7]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R544-R545) [[8]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R560-R562)\r\n\r\n**Logging and Observability Enhancements**\r\n\r\n* Added informative log messages throughout the node initialization process in `hopr/hopr-lib/src/lib.rs`, making it easier to follow progress and diagnose issues. [[1]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R657) [[2]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R679) [[3]](diffhunk://#diff-dd3e00deb7558c2678c6984b11fabc2f69ac770270c874cdcc65be5487cbfbf4R725)\r\n\r\n**Dependency Updates**\r\n\r\n* Updated dependencies in `Cargo.toml`: bumped `bytes` from `1.11.0` to `1.11.1`\r\n\r\n**Code Cleanup**\r\n\r\n* Removed the unused `Measurement` enum from `hopr/api/src/network/types.rs` to streamline the codebase.",
+    "state": "MERGED",
+    "title": "feat(hopr-lib): add more state granularity",
+    "updatedAt": "2026-02-04T10:58:52Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7782"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "Update exploited deps and make the dependabot pass.\r\n\r\n```\r\nremote: GitHub found 12 vulnerabilities on hoprnet/hoprnet's default branch (4 high, 4 moderate, 4 low). To find out more, visit:\r\nremote:      https://github.com/hoprnet/hoprnet/security/dependabot\r\nremote: \r\n```",
+    "state": "MERGED",
+    "title": "chore(deps): fix dependabot warnings by updating exploited deps",
+    "updatedAt": "2026-02-03T11:22:45Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7777"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "- Add missing session id to stateless pipeline messages, remove spans instrumentation from busy path.\r\n- Make SlotGuard for Rayon more idiomatic\r\n- Downgrade log level of a log message\r\n\r\n",
+    "state": "MERGED",
+    "title": "chore(hopr-lib): improve stateless session instrumentation",
+    "updatedAt": "2026-02-10T13:10:26Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7776"
+  },
+  {
+    "author": "tolbrino",
+    "body": "",
+    "state": "MERGED",
+    "title": "feat(deps): Update blokli-client to 0.18.0",
+    "updatedAt": "2026-02-02T09:36:21Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7775"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'hopli':\n    'github:hoprnet/hopli/9f0b252573f80d0ac5f91388e842fb201c068fec?narHash=sha256-sEBQ%2ByS0L23h9hy6cyN/kP8UH7jF/O3W4BNaTmO8suw%3D' (2026-01-18)\n  → 'github:hoprnet/hopli/51af18ec7863a5bae6f1ba09557331cc3b100941?narHash=sha256-zKKwa1nUgdh2zcK7JNnC4no80R/ipuakf9FkLYFPARU%3D' (2026-01-25)\n• Updated input 'nix-lib':\n    'github:hoprnet/nix-lib/c82652fb08f421c00ed9019bc51fb64c6378fd14?narHash=sha256-hwZFavjG9qi1cSZKkcBIjMQbkWfNV35q7o8TtugZ6Ro%3D' (2025-12-26)\n  → 'github:hoprnet/nix-lib/a5a05fb545a3de0e34664c8b5627c1adfee5bd4b?narHash=sha256-qdSXnyhIlB/LHOJHLV92M5UpOx4jLPHYTg%2BeKiaCvmg%3D' (2026-01-30)\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/fbe0437b19dac2f882f3e7b4efa9dbcb5a26e1a8?narHash=sha256-63GKn/Y%2B3qb7AISIpiDG7/bZ1rsqmab62ggcWLs4qC8%3D' (2026-01-24)\n  → 'github:NixOS/nixpkgs/41e216c0ca66c83b12ab7a98cc326b5db01db646?narHash=sha256-I7Lmgj3owOTBGuauy9FL6qdpeK2umDoe07lM4V%2BPnyA%3D' (2026-01-31)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/26b0093bc977081dc7653175a3fadab11e07bed7?narHash=sha256-6LYNeTHX7779CiR4oqhG4C6u2NIUeZUOfITHgywaRlQ%3D' (2026-01-24)\n  → 'github:NixOS/nixpkgs/cde0926ad2d7745974618ee2314d3331c47c93f3?narHash=sha256-CFlClzXoMZa1K959/X0ycUrtXVNjQOW1k1nLPIg9Zmo%3D' (2026-01-31)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/22da29e7f3d8cff75009cbbcf992c7cb66920cfd?narHash=sha256-gu6oZ86zLudBZMq8LL1qdtYt/S69GV5keQVXdvBrVSU%3D' (2026-01-24)\n  → 'github:oxalica/rust-overlay/a1d32c90c8a4ea43e9586b7e5894c179d5747425?narHash=sha256-zmnvRUm15QrlKH0V1BZoiT3U%2BQ%2Btr%2BP5Osi8qgtL9fY%3D' (2026-01-31)\n• Updated input 'treefmt-nix':\n    'github:numtide/treefmt-nix/e96d59dff5c0d7fddb9d113ba108f03c3ef99eca?narHash=sha256-67vyT1%2BxClLldnumAzCTBvU0jLZ1YBcf4vANRWP3%2BAk%3D' (2026-01-11)\n  → 'github:numtide/treefmt-nix/28b19c5844cc6e2257801d43f2772a4b4c050a1b?narHash=sha256-8aAYwyVzSSwIhP2glDhw/G0i5%2BwOrren3v6WmxkVonM%3D' (2026-01-29)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-02-02T21:02:58Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7773"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "The WebSocket Session endpoint `/session/websocket` has been removed.",
+    "state": "MERGED",
+    "title": "refactor(hoprd): remove WS endpoint from hoprd REST API",
+    "updatedAt": "2026-02-05T11:00:08Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7772"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "As in title.\r\nFixes https://github.com/hoprnet/hoprnet/issues/7766\r\nFixes https://linear.app/hoprnet/issue/HOP-601/cannot-open-channel",
+    "state": "MERGED",
+    "title": "fix: default tx confirm timeout in hoprd",
+    "updatedAt": "2026-01-30T16:57:59Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7767"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "This PR sets:\r\n\r\n- default outgoing ticket winning probability to unset (forcing to use the network value)\r\n- tx confirmation timeout to 90 seconds\r\n- ticket event queue capacity to 8192 events\r\n- default Blokli URL to `blokli.dufour.hoprnet.link`",
+    "state": "MERGED",
+    "title": "fix: default win probability and default tx confirm timeout",
+    "updatedAt": "2026-01-29T13:06:41Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7765"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "This fixes the attributes names for the reused action `Setup GCP` which now uses underscore instead of dash. \r\n\r\nThe pipelines won't work until we fix this. There is no option to test this change as the current workflows on `main` uses `pull_request_target` and therefore uses the worfklow definition at `main` which is incorrect.",
+    "state": "MERGED",
+    "title": "fix: Incompatible attributes in new 'Setup Gcp' workflow action",
+    "updatedAt": "2026-01-29T12:39:13Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7764"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "Add tuning for AI tools to simplify development and make sure that the repository context is built correctly and that agents do not stray away from generally agreed conventions.",
+    "state": "MERGED",
+    "title": "feat(docs): tune AI tools for proper development",
+    "updatedAt": "2026-01-29T10:46:11Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7761"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "Simple logging improvements.",
+    "state": "MERGED",
+    "title": "fix: improve logging",
+    "updatedAt": "2026-01-28T16:03:18Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7760"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "As in title.\r\n\r\nFixes #7758",
+    "state": "MERGED",
+    "title": "fix: decrease logging verbosity in libp2p discovery",
+    "updatedAt": "2026-01-27T18:30:28Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7759"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "Since using SqlLite, no TLS is needed at all, and apparently the native option makes it for the CI easier to build.",
+    "state": "MERGED",
+    "title": "fix: remove rusttls dependency from sea-orm and sqlx dependencies",
+    "updatedAt": "2026-01-27T11:42:04Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7749"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "The peers connected over a local connection (i.e. multiple nodes running over the same machine) would have the `send_back_addr` filtered out and would not be tracked as live connections, although the connection was present. The issue was fixed by moving the tracking code to take care of both local and non-local connections.\r\n\r\n# Notes\r\nFixes #7732 ",
+    "state": "MERGED",
+    "title": "fix(hopr-lib): fix issue related with the PEER_NOT_FOUND ping error",
+    "updatedAt": "2026-01-27T11:59:58Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7748"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "Update the REST API endpoint as in title, requested by @mjadach-iv ",
+    "state": "MERGED",
+    "title": "feat: add `hopr_network_name` to `node/info` endpoint",
+    "updatedAt": "2026-01-26T11:58:33Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7747"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "- improved nonce management\r\n- channel operations in hopr-lib use more robust on-chain event resolution\r\n- increased timeouts",
+    "state": "MERGED",
+    "title": "fix: improvements to on-chain connector",
+    "updatedAt": "2026-01-26T11:25:24Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7746"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'hopli':\n    'github:hoprnet/hopli/be7b009453c07a0810a7ee501b1f24ce8317c145?narHash=sha256-Co/xnyQWyanV08bxHEkpeLfzfOZyq2BZbvAqZkSXnGU%3D' (2026-01-12)\n  → 'github:hoprnet/hopli/9f0b252573f80d0ac5f91388e842fb201c068fec?narHash=sha256-sEBQ%2ByS0L23h9hy6cyN/kP8UH7jF/O3W4BNaTmO8suw%3D' (2026-01-18)\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/2d45849a3e974bafc8a16083f80306ed711a50fc?narHash=sha256-UYb3ydgKgkUve85S6Xbap91WCQG70ORlgzdRJNZIIbo%3D' (2026-01-15)\n  → 'github:NixOS/nixpkgs/fbe0437b19dac2f882f3e7b4efa9dbcb5a26e1a8?narHash=sha256-63GKn/Y%2B3qb7AISIpiDG7/bZ1rsqmab62ggcWLs4qC8%3D' (2026-01-24)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/a39c1be3a52abce7e4f706490752aadb1858da7d?narHash=sha256-vuGDw3vxab4NssoKtPa/1RmUFQ9oTy9quEGeHYXhOd4%3D' (2026-01-15)\n  → 'github:NixOS/nixpkgs/26b0093bc977081dc7653175a3fadab11e07bed7?narHash=sha256-6LYNeTHX7779CiR4oqhG4C6u2NIUeZUOfITHgywaRlQ%3D' (2026-01-24)\n• Updated input 'pre-commit':\n    'github:cachix/git-hooks.nix/f0927703b7b1c8d97511c4116eb9b4ec6645a0fa?narHash=sha256-6MkqajPICgugsuZ92OMoQcgSHnD6sJHwk8AxvMcIgTE%3D' (2026-01-01)\n  → 'github:cachix/git-hooks.nix/a1ef738813b15cf8ec759bdff5761b027e3e1d23?narHash=sha256-Efs3VUPelRduf3PpfPP2ovEB4CXT7vHf8W%2Bxc49RL/U%3D' (2026-01-22)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/1cd63408e71cc0e6a89ff2cb7c4107214e2523cc?narHash=sha256-y0BglISgDr61vvdb35m0O4npuqh1pojlBNDILo9j8AI%3D' (2026-01-15)\n  → 'github:oxalica/rust-overlay/22da29e7f3d8cff75009cbbcf992c7cb66920cfd?narHash=sha256-gu6oZ86zLudBZMq8LL1qdtYt/S69GV5keQVXdvBrVSU%3D' (2026-01-24)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-01-25T21:38:52Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7743"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "When `hoprd` exits with an error, now follows the tracing crate's logging format.\r\n\r\nCloses #7726",
+    "state": "MERGED",
+    "title": "fix: follow the logging format on errors too",
+    "updatedAt": "2026-01-20T20:04:52Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7742"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "The remaining on-chain data entries were removed from the `node/info` REST API endpoint and replaced with `provider_url` pointing to Blokli used by the node.",
+    "state": "MERGED",
+    "title": "fix: remove on-chain data from `node/info` API endpoint",
+    "updatedAt": "2026-01-20T14:37:20Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7741"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "The on-chain event timeout was too low (30 seconds), which with higher finalities was impossible to fit.\r\n\r\nNew value is set to 90 with future TODO to make it dynamic once available via ChainInfo, see https://github.com/hoprnet/blokli/issues/200\r\n\r\nFixes #7736",
+    "state": "MERGED",
+    "title": "fix: increase on-chain event timeout to 90 seconds",
+    "updatedAt": "2026-01-20T20:24:41Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7740"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "This pull request updates several GitHub Actions workflows to use newer versions of key third-party actions and internal workflow actions. The main focus is on keeping dependencies up to date for improved security, stability, and compatibility across all CI/CD pipelines.\r\n\r\n**Dependency updates in GitHub Actions workflows:**\r\n\r\n* Updated all usages of `actions/checkout` from version `v5.0.1` to `v6.0.2` for more recent features and bug fixes. [[1]](diffhunk://#diff-087f653dc03d6e74795a347139edd8b3b762f4517d8343f3071a4ec7d61c24ceL65-R76) [[2]](diffhunk://#diff-3c37f6434eaf7aa8af626f0506dcb91e875ddc9c2848f7b5a4e8c0e179d93114L114-R127) [[3]](diffhunk://#diff-38f58bece4051109b71e32a16cde03a185deeecc60bea6cc7e6c6ad6c903428aL85-R93) [[4]](diffhunk://#diff-38f58bece4051109b71e32a16cde03a185deeecc60bea6cc7e6c6ad6c903428aL105-R105) [[5]](diffhunk://#diff-97e1e79b4ecbd5261fd1b1a49312400b613bd1953d84d3485019f8eb0667d2e6L42-R48) [[6]](diffhunk://#diff-b9188138ae392c0a87bdee4573bfeee7fa319d1b4ab900452780a7b1da90738bL40-R58) [[7]](diffhunk://#diff-30c104edfdb5f37b17f378a345ae8f7e66f1cf3ab2d11e65efbb5524d094c59cL29-R35) [[8]](diffhunk://#diff-27d2910d2cdc1a36a6cbd3d69115accd7db6c549f7e79ba96b3b48f3e86b36b9L26-R32) [[9]](diffhunk://#diff-2431cebe61ea5234047c8e9331a488898789b037cb369cfcbb02cfb9ab95af99L34-R46) [[10]](diffhunk://#diff-d4e039d7809b2420e99e9c8ab4df8f377b318e88c5c3af9f428f019caf6501b0L37-R55) [[11]](diffhunk://#diff-9095ff2d0a6add5d26879fb60d5d3472fc3475b6b20e5ea745784c12a883ee1cL40-R52) [[12]](diffhunk://#diff-af487f6988a751c9f8f1a422777e3e09ded55b4d843883102510947b0afc9a1fL25-R42) [[13]](diffhunk://#diff-b0c72987aea7bc0005c4d62e5186e49386681281c232d09e601d2005f6cbb580L34-R52) [[14]](diffhunk://#diff-5406e77a00a10fd3946ed3a466b42e7c2d5abb4a2c381bc37ce34c6eadb07483L19-R32)\r\n* Updated all usages of `step-security/harden-runner` from `v2.14.0` to `v2.14.1` for improved runner security. [[1]](diffhunk://#diff-087f653dc03d6e74795a347139edd8b3b762f4517d8343f3071a4ec7d61c24ceL35-R35) [[2]](diffhunk://#diff-3c37f6434eaf7aa8af626f0506dcb91e875ddc9c2848f7b5a4e8c0e179d93114L69-R69) [[3]](diffhunk://#diff-38f58bece4051109b71e32a16cde03a185deeecc60bea6cc7e6c6ad6c903428aL45-R45) [[4]](diffhunk://#diff-97e1e79b4ecbd5261fd1b1a49312400b613bd1953d84d3485019f8eb0667d2e6L42-R48) [[5]](diffhunk://#diff-b9188138ae392c0a87bdee4573bfeee7fa319d1b4ab900452780a7b1da90738bL40-R58) [[6]](diffhunk://#diff-30c104edfdb5f37b17f378a345ae8f7e66f1cf3ab2d11e65efbb5524d094c59cL29-R35) [[7]](diffhunk://#diff-27d2910d2cdc1a36a6cbd3d69115accd7db6c549f7e79ba96b3b48f3e86b36b9L26-R32) [[8]](diffhunk://#diff-2431cebe61ea5234047c8e9331a488898789b037cb369cfcbb02cfb9ab95af99L34-R46) [[9]](diffhunk://#diff-d4e039d7809b2420e99e9c8ab4df8f377b318e88c5c3af9f428f019caf6501b0L37-R55) [[10]](diffhunk://#diff-9095ff2d0a6add5d26879fb60d5d3472fc3475b6b20e5ea745784c12a883ee1cL40-R52) [[11]](diffhunk://#diff-af487f6988a751c9f8f1a422777e3e09ded55b4d843883102510947b0afc9a1fL25-R42) [[12]](diffhunk://#diff-b0c72987aea7bc0005c4d62e5186e49386681281c232d09e601d2005f6cbb580L34-R52) [[13]](diffhunk://#diff-5406e77a00a10fd3946ed3a466b42e7c2d5abb4a2c381bc37ce34c6eadb07483L19-R32)\r\n\r\n**Build and caching tool updates:**\r\n\r\n* Updated `cachix/install-nix-action` from an older commit to a newer one (still `v31`) and `cachix/cachix-action` from an older commit to a newer one (still `v16`) to ensure the latest improvements and bug fixes. [[1]](diffhunk://#diff-087f653dc03d6e74795a347139edd8b3b762f4517d8343f3071a4ec7d61c24ceL65-R76) [[2]](diffhunk://#diff-3c37f6434eaf7aa8af626f0506dcb91e875ddc9c2848f7b5a4e8c0e179d93114L114-R127) [[3]](diffhunk://#diff-97e1e79b4ecbd5261fd1b1a49312400b613bd1953d84d3485019f8eb0667d2e6L61-R73) [[4]](diffhunk://#diff-b9188138ae392c0a87bdee4573bfeee7fa319d1b4ab900452780a7b1da90738bL40-R58) [[5]](diffhunk://#diff-2431cebe61ea5234047c8e9331a488898789b037cb369cfcbb02cfb9ab95af99L34-R46) [[6]](diffhunk://#diff-d4e039d7809b2420e99e9c8ab4df8f377b318e88c5c3af9f428f019caf6501b0L37-R55) [[7]](diffhunk://#diff-af487f6988a751c9f8f1a422777e3e09ded55b4d843883102510947b0afc9a1fL25-R42) [[8]](diffhunk://#diff-b0c72987aea7bc0005c4d62e5186e49386681281c232d09e601d2005f6cbb580L34-R52)\r\n\r\n**Internal workflow and artifact publishing updates:**\r\n\r\n* Updated `hoprnet/hopr-workflows/actions/setup-gcp` to a newer commit for all workflows that use Google Cloud Platform setup. [[1]](diffhunk://#diff-38f58bece4051109b71e32a16cde03a185deeecc60bea6cc7e6c6ad6c903428aL85-R93) [[2]](diffhunk://#diff-97e1e79b4ecbd5261fd1b1a49312400b613bd1953d84d3485019f8eb0667d2e6L61-R73) [[3]](diffhunk://#diff-5406e77a00a10fd3946ed3a466b42e7c2d5abb4a2c381bc37ce34c6eadb07483L19-R32)\r\n* Updated `actions/upload-artifact` from `v5.0.0` to `v6.0.0` in the build binaries workflow for publishing artifacts.\r\n* Updated `github/codeql-action/upload-sarif` from `v4.31.10` to `v4.32.0` in the security analysis workflow.",
+    "state": "MERGED",
+    "title": "chore(deps): update 20260129",
+    "updatedAt": "2026-01-29T14:54:54Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7738"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/2d45849a3e974bafc8a16083f80306ed711a50fc?narHash=sha256-UYb3ydgKgkUve85S6Xbap91WCQG70ORlgzdRJNZIIbo%3D' (2026-01-15)\n  → 'github:NixOS/nixpkgs/70c09395689ff758e6ae06ce77497ab0eb65b9cd?narHash=sha256-IevXFODGzX6E%2B24BBoJds8iVwa%2BNX2JT2jCDDtBZY5A%3D' (2026-01-18)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/a39c1be3a52abce7e4f706490752aadb1858da7d?narHash=sha256-vuGDw3vxab4NssoKtPa/1RmUFQ9oTy9quEGeHYXhOd4%3D' (2026-01-15)\n  → 'github:NixOS/nixpkgs/015d12a41685234fd4008cf2a54c526fb8109110?narHash=sha256-zzpaSJ4GLT79gWyvOuPRfoxbq78IlqGnfa8ajKnsk4Y%3D' (2026-01-18)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/1cd63408e71cc0e6a89ff2cb7c4107214e2523cc?narHash=sha256-y0BglISgDr61vvdb35m0O4npuqh1pojlBNDILo9j8AI%3D' (2026-01-15)\n  → 'github:oxalica/rust-overlay/56d0fbdd732f3686e8414b857cf885038fc17d57?narHash=sha256-Z3%2B6dxoWZn%2BQFwjxAt5ZGXkiuCvCLgQP6pTS5eSWXqk%3D' (2026-01-17)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-01-19T21:51:45Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7733"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "The new `hoprd-gen-test` can be used to generate HOPR identities, Safes and hoprd configuration files given a Blokli instance.\r\n\r\nThis is useful for creating local `hoprd` cluster:\r\n\r\n```shell\r\ndocker run --rm -p 8080:8080 -e RUST_LOG=debug bloklid-anvil:latest\r\ncargo run --bin hoprd-gen-test\r\n```\r\n\r\nThis will generate deterministic identity files, deploy and fund their Safes and generate `hoprd` configuration files in `/tmp/hopr-nodes/` using the local Blokli instance inside the Docker container.\r\n\r\nRefs #7672",
+    "state": "MERGED",
+    "title": "feat: add `hoprd-gen-test` node test deployment generator",
+    "updatedAt": "2026-01-19T21:45:56Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7731"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "The tasks of cleaning up the registry are now done in `hopr-workflows` repository and for all repositories. A single repository does not need to take care of cleaning its images and binaries.",
+    "state": "MERGED",
+    "title": "feat: Cleanup registry is done in hopr-workflows repository",
+    "updatedAt": "2026-01-21T08:55:14Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7727"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "- [x] fix(utils): improve the exports and usage of deps in utils\r\n- [x] fix(deps): proper reexport ",
+    "state": "MERGED",
+    "title": "fix: edge-client related API cleanups",
+    "updatedAt": "2026-01-29T13:46:20Z",
+    "url": "https://github.com/hoprnet/hoprnet/pull/7666"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "The action `download-artifact-registry@download-artifact-registry-v1` had 2 issues:\r\n- The transformation of files into an array was incorrect and had to add a fallback instruction to avoid premature exit\r\n- The gcloud command was incorrect and required the parameter `--name` and it's value formatted accordingly.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Improved robustness of file reading with graceful error handling.\n  * Enhanced error messaging for clearer feedback.\n\n* **New Features**\n  * Added output listing all successfully downloaded files.\n\n* **Refactor**\n  * Optimized per-file download operations for better reliability and clarity.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "Fix download-artifact-registry action",
+    "updatedAt": "2026-02-09T12:27:12Z",
+    "url": "https://github.com/hoprnet/hopr-workflows/pull/15"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "Fixes the generation of release notes and release version\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Fixed changelog generation to reliably handle empty or missing entries, preventing blank items from appearing in release notes.\n* **Chores**\n  * Improved release automation by ensuring the repository is checked out with full history before versioning and release steps run.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Fix release version and generate release notes",
+    "updatedAt": "2026-01-30T10:21:46Z",
+    "url": "https://github.com/hoprnet/hopr-workflows/pull/14"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "The current docker build workflow fails when the docker vulnerability scan finds a high or critical vulnerability. Some projects need time to analyze the vulnerability or there is no alternative than to accept the vulnerability.\r\n\r\nThis PR adds a flag to avoid blocking the projects but still reporting the vulnerability scan analysis.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added configurable vulnerability scanning behavior for Docker image builds; builds can now optionally proceed when vulnerabilities are detected during scans.\n\n* **Documentation**\n  * Updated workflow documentation with new configuration parameters for deployment staging and vulnerability scanning options.\n\n* **Chores**\n  * Minor workflow utility improvements.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "Add flag to disable scan vulnerability failures",
+    "updatedAt": "2026-01-29T22:58:05Z",
+    "url": "https://github.com/hoprnet/hopr-workflows/pull/13"
+  },
+  {
+    "author": "jeandemeusy",
+    "body": "The anvil entrypoint was built with the host pkgs (darwin), so the shebang pointed at a macOS bash inside the Linux image. That yields exec format error when the container starts. \r\n\r\nThe PR switches to building the entrypoint with the matching Linux pkgs for each architecture\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Docker images now support x86_64 and ARM64 (aarch64) architectures with platform-specific configurations.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: entry point for darwin",
+    "updatedAt": "2026-02-10T16:17:55Z",
+    "url": "https://github.com/hoprnet/blokli/pull/223"
+  },
+  {
+    "author": "tolbrino",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Enhanced subscription channel state filtering logic\n  * Improved block processing with concurrent mutual exclusion\n  * Fixed architecture detection in build scripts for macOS compatibility\n\n* **Tests**\n  * Enhanced subscription client integration test with improved timeout handling and status verification\n\n* **Chores**\n  * Maintenance version bumps (0.15.1, 0.14.2)\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Use only block number as watermark",
+    "updatedAt": "2026-02-10T11:16:25Z",
+    "url": "https://github.com/hoprnet/blokli/pull/221"
+  },
+  {
+    "author": "tolbrino",
+    "body": "Fixes #218 \r\n\r\n - Add event-bus–driven subscriptions for channel and transaction updates, replacing polling with `async-broadcast`\r\n - Add `status` filter to the `channels` query for filtering by channel lifecycle state\r\n - Randomize Phase 1 subscription results\r\n - Introduce `account_current` and `channel_current` database views and migrate all state queries to use them, eliminating manual `ORDER BY / LIMIT 1` patterns\r\n - Refactor model conversions where possible\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Two-phase subscriptions: randomized initial snapshots + real-time filtered updates.\n  * Event-driven transaction status subscriptions (subscribe to status deltas).\n  * Channel status filtering in queries and subscriptions.\n\n* **Improvements**\n  * DB-side current-state views for faster, consistent reads.\n  * Batch account loading to avoid N+1 lookups.\n  * SSE stream events labeled as \"next\".\n\n* **Documentation**\n  * Expanded architecture, transaction store, batch-loading, and Phase 1 ordering guidance.\n\n* **Tests**\n  * Expanded integration and subscription tests for Phase 1/2 and transaction sequencing.\n\n* **Chores**\n  * Package version bumps and migration for updated views.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: Add channel status filtering, current-state views and improved subscriptions",
+    "updatedAt": "2026-02-09T11:56:10Z",
+    "url": "https://github.com/hoprnet/blokli/pull/219"
+  },
+  {
+    "author": "tolbrino",
+    "body": "This is useful to quickly debug packed on-chain channel state.\r\n\r\nExample:\r\n\r\n```bash\r\n> ./target/debug/blokli-helper decode-channel 0x000000000000010000010000000000000000d20b00000000000000000061a7f8\r\nChannel State Decoded:\r\n  Status:       Open (1)\r\n  Epoch:        1\r\n  Closure Time: 0\r\n  Ticket Index: 53771 (0xD20B)\r\n  Balance:      6399992 wei (0.000000000006399992 wxHOPR)\r\n```\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added a new CLI command `decode-channel` that decodes a 32-byte hex channel state into human-readable fields: status, epoch, closure time, ticket index, and balance.\n\n* **Chores**\n  * Added a new workspace member for the helper tool and adjusted internal module exports to surface the decoding functionality without changing usage.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat(bin): Add helper binary for decoding channel state",
+    "updatedAt": "2026-02-05T08:16:31Z",
+    "url": "https://github.com/hoprnet/blokli/pull/216"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "- add the `finality` field to the API query for chain info\r\n- allow printing out peer IDs for accounts in the `blokli-inspector`\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added peer ID display option to the inspector CLI tool for enhanced account information visibility.\n  * Extended chain information to include finality data.\n\n* **Chores**\n  * Version bumped for client package (0.17.0 → 0.18.0) and inspector tool (0.6.0 → 0.7.0).\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: add finality to client query, allow peers ids in blokli-inspector",
+    "updatedAt": "2026-01-31T18:39:08Z",
+    "url": "https://github.com/hoprnet/blokli/pull/215"
+  },
+  {
+    "author": "tolbrino",
+    "body": "Also add finality to ChainInfo and fix integration test runs in CI.\r\n\r\nFixes #200 \r\nFixes #199 \n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Chain info now exposes a finality field (required block confirmations).\n  * SSE subscriptions emit periodic keep-alive events using per-connection identifiers.\n\n* **Documentation**\n  * Expanded GraphQL and architecture docs: SSE streaming, keep-alive behavior (default 15s) and patterns for safe context and notifications.\n\n* **Chores**\n  * Bumped package versions; added regex workspace dependency; CI image path and markdown linter updates.\n\n* **Tests**\n  * Expanded SSE keep-alive tests (format, UUID, uniqueness, concurrency) and widespread test adjustments.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat(api): Add unique SSE connection identifiers",
+    "updatedAt": "2026-01-30T19:58:53Z",
+    "url": "https://github.com/hoprnet/blokli/pull/214"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "The close release workflow is using the permissions of the invoker to bump the version in main branch directly. It needs to use the Hopr bot token which has an exclusion to do commits directly in main branch.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Enhanced release workflow configuration by updating action references and adding source branch and token inputs for improved release automation.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Allow the close release pipeline to bump version using hopr bot",
+    "updatedAt": "2026-02-02T18:26:06Z",
+    "url": "https://github.com/hoprnet/blokli/pull/213"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "Fixes the deployment workflow by adding the namespace and label selector to chose which deployments restart while building with label `deploy-staging`\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n## Summary by CodeRabbit\r\n\r\n* **Chores**\r\n  * Updated deployment configuration for build processes.\r\n\r\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\r\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Fix deployment while building",
+    "updatedAt": "2026-01-29T08:38:40Z",
+    "url": "https://github.com/hoprnet/blokli/pull/211"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "The merge and release pipelines are missing some permissions to write security checks\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated CI/CD pipeline permissions to enhance security and enable additional workflow capabilities in automated build processes.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Fix pipeline permissions",
+    "updatedAt": "2026-01-28T15:44:28Z",
+    "url": "https://github.com/hoprnet/blokli/pull/210"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "The `blokli-inspector` now allows to query accounts using packet key or PeerId.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added packet key-based account selection method, providing users with an alternative way to identify accounts. Supports multiple identification formats for enhanced flexibility.\n\n* **Chores**\n  * Updated package version to 0.6.0\n  * Integrated new cryptographic types dependency for core functionality\n\n* **Style**\n  * Applied minor formatting improvements\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: add packet-key account query option to blokli-inspector",
+    "updatedAt": "2026-01-28T15:15:48Z",
+    "url": "https://github.com/hoprnet/blokli/pull/209"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "Add the networks for `jura` and `dufour`\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Jura network added as a supported configuration with its network parameters (polling, confirmations, block timing).\n\n* **Documentation**\n  * Docs, configuration examples, and API schema examples updated to include Jura as an available network option.\n\n* **Chores**\n  * Package version bumped to 0.6.3.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: Add Jura and dufour networks",
+    "updatedAt": "2026-01-28T13:53:41Z",
+    "url": "https://github.com/hoprnet/blokli/pull/207"
+  },
+  {
+    "author": "tolbrino",
+    "body": "Fixes #198\r\n\r\nThe idea is to find the modules for each pre-seeded safe at startup instead of relying on the indexer alone. Thus the startup has been extended with 2 steps:\r\n\r\n(1) Pre-seed safe data always (no-op if it was pre-seeded before)\r\n(2) Then for each pre-seeded safe which has not additional state entry yet the on-chain data will be read to get the module address\r\n\r\nIn order to implement these changes the safe contracts table has been extended to use the same temporal setup like the accounts table.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * CSV-based pre-seeding of safes with a startup refresh that updates pre-seeded safe modules and returns simple update/unchanged/error counts.\n  * New startup module and a DB accessor to help integrations interact with the indexer.\n\n* **Chores**\n  * Database schema bumped to version 11 with a temporal current-state model for safe contracts and accompanying migration.\n  * Crate version bumps across multiple packages and migration wiring updates.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat(db): Turn safe contracts into a temporal table set",
+    "updatedAt": "2026-01-30T11:09:49Z",
+    "url": "https://github.com/hoprnet/blokli/pull/203"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "The application should follow the chosen tracing log format when an error is raised.\r\n\r\nCloses #185\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Refactor**\n  * Restructured application startup into a clear lifecycle with separate initialization and run phases, improved logging initialization, and more explicit error handling and exit codes for more predictable behavior.\n* **Chores**\n  * Bumped application version to 0.6.2.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: follow logging format on error",
+    "updatedAt": "2026-01-21T10:43:22Z",
+    "url": "https://github.com/hoprnet/blokli/pull/201"
+  },
+  {
+    "author": "tolbrino",
+    "body": "Supersedes #141 \r\n\r\nFixes #173\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added integration and system test targets for end-to-end validation.\n\n* **Tests**\n  * New PR CI checks and test workflows (unit, nextest, schema validation, integration orchestration).\n\n* **Documentation**\n  * Updated Docker image documentation with clarified image variants and architecture guidance.\n\n* **Chores**\n  * Renamed docker/binary artifacts to a consistent naming scheme, consolidated build/release flows, and removed several legacy CI workflows (legacy builds, smoke tests, security scans).\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat(ci): Unify workflows",
+    "updatedAt": "2026-01-28T12:09:42Z",
+    "url": "https://github.com/hoprnet/blokli/pull/178"
+  },
+  {
+    "author": "esterlus",
+    "body": "This should be temporary until we find good values\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Blockchain connector settings are now configurable via optional parameters instead of using hardcoded values.\n  * BlockchainConnectorConfig is now publicly exported for direct use.\n\n* **Chores**\n  * Version bumped to 2.0.0 (major version release).\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: expose blockchainconnectorconfig for easier testing adjustments",
+    "updatedAt": "2026-02-09T16:42:55Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/26"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Bumped package version to 1.0.7.\n  * Updated internal dependencies to newer revisions.\n  * Improved blockchain connector initialization to apply sensible defaults and added a sync tolerance setting for connector startup.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: bump hopr-lib version",
+    "updatedAt": "2026-02-09T12:03:24Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/25"
+  },
+  {
+    "author": "esterlus",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Initialization now reports progress via a required observer callback that receives each initialization state (real-time init state updates).\n\n* **Refactor**\n  * API simplified to accept a non-optional, non-mutable visitor callback; visitor is invoked unconditionally at each init step and caller must supply a callback.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix(visitor): expose visitor as non mut function",
+    "updatedAt": "2026-02-06T10:30:34Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/24"
+  },
+  {
+    "author": "esterlus",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Configuration**\n  * Reduced default client timeout from 120s to 3s.\n\n* **Chores**\n  * Bumped package version to 1.0.6.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix(timeout): drastically decrease blokli connection timeout",
+    "updatedAt": "2026-02-06T10:30:20Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/23"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "98% done by an AI agent...  visitor notification for the state changes in the edgli client.",
+    "state": "MERGED",
+    "title": "feat(edgli): add state update notifications",
+    "updatedAt": "2026-02-04T10:53:13Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/22"
+  },
+  {
+    "author": "Teebor-Choka",
+    "body": "This pull request updates several dependencies in the `Cargo.toml` file to keep the project up-to-date with the latest compatible versions. These changes help ensure security, stability, and access to new features and bug fixes.\r\n\r\n**Dependency updates:**\r\n\r\n* Bumped `async-signal` from version `0.2.12` to `0.2.13`.\r\n* Bumped `tokio` from version `1.48.0` to `1.49.0`.\r\n* Bumped `url` from version `2.5.7` to `2.5.8`.",
+    "state": "MERGED",
+    "title": "chore(deps): update 20260204",
+    "updatedAt": "2026-02-04T10:01:40Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/21"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Version bumped to 1.0.5\n\n* **Bug Fixes**\n  * Updated stream reconnection timeout to 30 seconds with exponential backoff behavior\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore(docs): clarify timeout",
+    "updatedAt": "2026-02-04T07:20:40Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/20"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "- update default Blokli URL\r\n- update Safe deployment timeout\r\n- update Subscription reconnection timeout\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Bumped package version to 1.0.4.\n  * Updated default service endpoint to the new production domain.\n  * Tuned network timeouts: increased overall request timeout and shortened stream reconnection interval for faster recovery.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: update timeouts and bump version",
+    "updatedAt": "2026-02-04T07:08:10Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/19"
+  },
+  {
+    "author": "esterlus",
+    "body": "…one blokli\r\n\r\nfixes https://github.com/hoprnet/hoprnet/issues/7778\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Adjusted blockchain connector timeout configurations to improve reliability of network operations. Transaction confirmation timeout extended from 30 to 90 seconds, and connection timeout extended from 1 to 2 minutes.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix(timeouts): use same blokli timeouts in edgeclient as with standal…",
+    "updatedAt": "2026-02-03T11:14:59Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/18"
+  },
+  {
+    "author": "esterlus",
+    "body": "Dependency for fixing: https://github.com/gnosis/gnosis_vpn-client/issues/317\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Deployment flow now detects existing deployments and skips redundant redeployments.\n\n* **Improvements**\n  * Increased network timeouts for greater reliability (transaction confirmation and connection).\n  * Simplified formatter/tooling configuration and removed a custom formatter override.\n\n* **Chores**\n  * Updated Rust toolchain version.\n  * Simplified build configuration.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat(safe): expose existing safe retrieval",
+    "updatedAt": "2026-01-30T23:12:50Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/16"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "As in title.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated multiple Rust dependencies and internal crate revisions to newer versions to keep the codebase current and compatible.\n* **Notes**\n  * No changes to public/exported APIs or user-facing behavior.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: update hopr-lib",
+    "updatedAt": "2026-01-29T13:31:47Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/15"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "Update hopr-lib version to the one that is not using rusttls\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated internal dependencies to newer revisions across five core libraries to keep them aligned and compatible.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: update hopr-lib",
+    "updatedAt": "2026-01-27T13:12:32Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/13"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Bumped package version to 1.0.2\n  * Updated signal-hook dependency\n  * Synchronized internal dependencies to a common revision for compatibility\n  * Added a connection timeout configuration to improve startup reliability and robustness\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: minor updates for GnosisVPN client",
+    "updatedAt": "2026-01-26T18:40:26Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/12"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated core dependencies to latest versions while maintaining all existing functionality and features.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: update Cargo.lock",
+    "updatedAt": "2026-01-21T09:53:29Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/11"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "As in title.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Bumped package version to 1.0.1\n  * Updated internal dependencies to latest versions\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "chore: update hopr-lib",
+    "updatedAt": "2026-01-21T09:47:35Z",
+    "url": "https://github.com/hoprnet/edge-client/pull/10"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'flake-parts':\n    'github:hercules-ci/flake-parts/80daad04eddbbf5a4d883996a73f3f542fa437ac?narHash=sha256-PVvu7OqHBGWN16zSi6tEmPwwHQ4rLPU9Plvs8/1TUBY%3D' (2026-01-11)\n  → 'github:hercules-ci/flake-parts/57928607ea566b5db3ad13af0e57e921e6b12381?narHash=sha256-AnYjnFWgS49RlqX7LrC4uA%2BsCCDBj0Ry/WOJ5XWAsa0%3D' (2026-02-02)\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/41e216c0ca66c83b12ab7a98cc326b5db01db646?narHash=sha256-I7Lmgj3owOTBGuauy9FL6qdpeK2umDoe07lM4V%2BPnyA%3D' (2026-01-31)\n  → 'github:NixOS/nixpkgs/d27b6a595fcd6483404835a7feaf5d0c040581c0?narHash=sha256-o7q1AGBIhTNzFUDsmIppb22lJTrVszQEOm143CeS/ac%3D' (2026-02-07)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/bfc1b8a4574108ceef22f02bafcf6611380c100d?narHash=sha256-msG8SU5WsBUfVVa/9RPLaymvi5bI8edTavbIq3vRlhI%3D' (2026-01-26)\n  → 'github:NixOS/nixpkgs/00c21e4c93d963c50d4c0c89bfa84ed6e0694df2?narHash=sha256-AYqlWrX09%2BHvGs8zM6ebZ1pwUqjkfpnv8mewYwAo%2BiM%3D' (2026-02-04)\n• Updated input 'pre-commit':\n    'github:cachix/git-hooks.nix/a1ef738813b15cf8ec759bdff5761b027e3e1d23?narHash=sha256-Efs3VUPelRduf3PpfPP2ovEB4CXT7vHf8W%2Bxc49RL/U%3D' (2026-01-22)\n  → 'github:cachix/git-hooks.nix/a8ca480175326551d6c4121498316261cbb5b260?narHash=sha256-Fok2AmefgVA0%2Beprw2NDwqKkPGEI5wvR%2BtwiZagBvrg%3D' (2026-02-01)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/a1d32c90c8a4ea43e9586b7e5894c179d5747425?narHash=sha256-zmnvRUm15QrlKH0V1BZoiT3U%2BQ%2Btr%2BP5Osi8qgtL9fY%3D' (2026-01-31)\n  → 'github:oxalica/rust-overlay/9922ff9f99a6436756cbe6f5d11f9c3630e58cf0?narHash=sha256-IaiqGwmLBrR0z67t/oaS6GIFxv9V8mDY7dBTuYVTbKY%3D' (2026-02-07)\n• Updated input 'treefmt-nix':\n    'github:numtide/treefmt-nix/28b19c5844cc6e2257801d43f2772a4b4c050a1b?narHash=sha256-8aAYwyVzSSwIhP2glDhw/G0i5%2BwOrren3v6WmxkVonM%3D' (2026-01-29)\n  → 'github:numtide/treefmt-nix/337a4fe074be1042a35086f15481d763b8ddc0e7?narHash=sha256-wQ6NJSuFqAEmIg2VMnLdCnUc0b7vslUohqqGGD%2BFyxk%3D' (2026-02-04)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-02-08T17:11:48Z",
+    "url": "https://github.com/hoprnet/hopli/pull/42"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'nix-lib':\n    'github:hoprnet/nix-lib/c82652fb08f421c00ed9019bc51fb64c6378fd14?narHash=sha256-hwZFavjG9qi1cSZKkcBIjMQbkWfNV35q7o8TtugZ6Ro%3D' (2025-12-26)\n  → 'github:hoprnet/nix-lib/a5a05fb545a3de0e34664c8b5627c1adfee5bd4b?narHash=sha256-qdSXnyhIlB/LHOJHLV92M5UpOx4jLPHYTg%2BeKiaCvmg%3D' (2026-01-30)\n• Updated input 'nix-lib/crane':\n    'github:ipetkov/crane/2b3a5a88d852575758e1eb6ac9ee677fcd633fc1?narHash=sha256-RSkJtNtx0SEaQiYqsoFoRynwfZLo2OZ9z6rUq1DJR6g%3D' (2025-12-05)\n  → 'github:ipetkov/crane/4b6527687cfd20da3c2ef8287e01b74c2d6c705b?narHash=sha256-VFkNyxHxkqGp8gf8kfFMW1j6XeBy609kv6TE9uF/0Js%3D' (2026-01-13)\n• Updated input 'nix-lib/nixpkgs-unstable':\n    'github:nixos/nixpkgs/ab9fbbcf4858bd6d40ba2bbec37ceb4ab6e1f562?narHash=sha256-mAdJpV0e5IGZjnE4f/8uf0E4hQR7ptRP00gnZKUOdMo%3D' (2026-01-24)\n  → 'github:nixos/nixpkgs/afce96367b2e37fc29afb5543573cd49db3357b7?narHash=sha256-xV20Alb7ZGN7qujnsi5lG1NckSUmpIb05H2Xar73TDc%3D' (2026-01-27)\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/fbe0437b19dac2f882f3e7b4efa9dbcb5a26e1a8?narHash=sha256-63GKn/Y%2B3qb7AISIpiDG7/bZ1rsqmab62ggcWLs4qC8%3D' (2026-01-24)\n  → 'github:NixOS/nixpkgs/41e216c0ca66c83b12ab7a98cc326b5db01db646?narHash=sha256-I7Lmgj3owOTBGuauy9FL6qdpeK2umDoe07lM4V%2BPnyA%3D' (2026-01-31)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/88d3861acdd3d2f0e361767018218e51810df8a1?narHash=sha256-MJ27Cy2NtBEV5tsK%2BYraYr2g851f3Fl1LpNHDzDX15c%3D' (2026-01-21)\n  → 'github:NixOS/nixpkgs/bfc1b8a4574108ceef22f02bafcf6611380c100d?narHash=sha256-msG8SU5WsBUfVVa/9RPLaymvi5bI8edTavbIq3vRlhI%3D' (2026-01-26)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/22da29e7f3d8cff75009cbbcf992c7cb66920cfd?narHash=sha256-gu6oZ86zLudBZMq8LL1qdtYt/S69GV5keQVXdvBrVSU%3D' (2026-01-24)\n  → 'github:oxalica/rust-overlay/a1d32c90c8a4ea43e9586b7e5894c179d5747425?narHash=sha256-zmnvRUm15QrlKH0V1BZoiT3U%2BQ%2Btr%2BP5Osi8qgtL9fY%3D' (2026-01-31)\n• Updated input 'treefmt-nix':\n    'github:numtide/treefmt-nix/e96d59dff5c0d7fddb9d113ba108f03c3ef99eca?narHash=sha256-67vyT1%2BxClLldnumAzCTBvU0jLZ1YBcf4vANRWP3%2BAk%3D' (2026-01-11)\n  → 'github:numtide/treefmt-nix/28b19c5844cc6e2257801d43f2772a4b4c050a1b?narHash=sha256-8aAYwyVzSSwIhP2glDhw/G0i5%2BwOrren3v6WmxkVonM%3D' (2026-01-29)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-02-02T17:57:33Z",
+    "url": "https://github.com/hoprnet/hopli/pull/40"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "- The close release workflow is using the permissions of the invoker to bump the version in main branch directly. It needs to use the Hopr bot token which has an exclusion to do commits directly in main branch.\r\n- The build, merge and release pipeline do not have proper permissions\r\n- Added the skip of docker image vulnerability\r\n\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n\r\n## Summary by CodeRabbit\r\n\r\n* **Chores**\r\n  * Enhanced build security scanning with configurable vulnerability checks across workflows\r\n  * Streamlined release workflow with improved version management and token handling\r\n\r\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\r\n\r\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Fixes several pipeline errors",
+    "updatedAt": "2026-02-02T16:41:00Z",
+    "url": "https://github.com/hoprnet/hopli/pull/39"
+  },
+  {
+    "author": "app/github-actions",
+    "body": "Automated changes by the [update-flake-lock](https://github.com/DeterminateSystems/update-flake-lock) GitHub Action.\n\n```\nFlake lock file updates:\n\n• Updated input 'nix-lib/nixpkgs-unstable':\n    'github:nixos/nixpkgs/be5afa0fcb31f0a96bf9ecba05a516c66fcd8114?narHash=sha256-bB6Nt99Cj8Nu5nIUq0GLmpiErIT5KFshMQJGMZwgqUo%3D' (2026-01-16)\n  → 'github:nixos/nixpkgs/ab9fbbcf4858bd6d40ba2bbec37ceb4ab6e1f562?narHash=sha256-mAdJpV0e5IGZjnE4f/8uf0E4hQR7ptRP00gnZKUOdMo%3D' (2026-01-24)\n• Updated input 'nixpkgs':\n    'github:NixOS/nixpkgs/70c09395689ff758e6ae06ce77497ab0eb65b9cd?narHash=sha256-IevXFODGzX6E%2B24BBoJds8iVwa%2BNX2JT2jCDDtBZY5A%3D' (2026-01-18)\n  → 'github:NixOS/nixpkgs/fbe0437b19dac2f882f3e7b4efa9dbcb5a26e1a8?narHash=sha256-63GKn/Y%2B3qb7AISIpiDG7/bZ1rsqmab62ggcWLs4qC8%3D' (2026-01-24)\n• Updated input 'nixpkgs-unstable':\n    'github:NixOS/nixpkgs/e4bae1bd10c9c57b2cf517953ab70060a828ee6f?narHash=sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc%3D' (2026-01-16)\n  → 'github:NixOS/nixpkgs/88d3861acdd3d2f0e361767018218e51810df8a1?narHash=sha256-MJ27Cy2NtBEV5tsK%2BYraYr2g851f3Fl1LpNHDzDX15c%3D' (2026-01-21)\n• Updated input 'pre-commit':\n    'github:cachix/git-hooks.nix/f0927703b7b1c8d97511c4116eb9b4ec6645a0fa?narHash=sha256-6MkqajPICgugsuZ92OMoQcgSHnD6sJHwk8AxvMcIgTE%3D' (2026-01-01)\n  → 'github:cachix/git-hooks.nix/a1ef738813b15cf8ec759bdff5761b027e3e1d23?narHash=sha256-Efs3VUPelRduf3PpfPP2ovEB4CXT7vHf8W%2Bxc49RL/U%3D' (2026-01-22)\n• Updated input 'rust-overlay':\n    'github:oxalica/rust-overlay/56d0fbdd732f3686e8414b857cf885038fc17d57?narHash=sha256-Z3%2B6dxoWZn%2BQFwjxAt5ZGXkiuCvCLgQP6pTS5eSWXqk%3D' (2026-01-17)\n  → 'github:oxalica/rust-overlay/22da29e7f3d8cff75009cbbcf992c7cb66920cfd?narHash=sha256-gu6oZ86zLudBZMq8LL1qdtYt/S69GV5keQVXdvBrVSU%3D' (2026-01-24)\n```\n\n### Running GitHub Actions on this PR\n\nGitHub Actions will not run workflows on pull requests which are opened by a GitHub Action.\n\n**To run GitHub Actions workflows on this PR, close and re-open this pull request.**",
+    "state": "MERGED",
+    "title": "chore(nix): update flake.lock",
+    "updatedAt": "2026-01-25T21:40:48Z",
+    "url": "https://github.com/hoprnet/hopli/pull/37"
+  },
+  {
+    "author": "QYuQianchen",
+    "body": "### Description\r\n\r\nComplete docs for audit.\r\nDeploy Jura network for https://github.com/hoprnet/gitops/issues/309\r\nFixes https://github.com/hoprnet/contracts/issues/10\r\nFixes https://github.com/hoprnet/contracts/issues/9\r\nFixes https://github.com/hoprnet/contracts/issues/8\r\nFixes https://github.com/hoprnet/contracts/issues/7\r\nFixes https://github.com/hoprnet/contracts/issues/6\r\nFixes https://github.com/hoprnet/contracts/issues/57\r\n\r\n#### Staging network jura\r\n```json\r\n    \"jura\": {\r\n      \"addresses\": {\r\n        \"announcements\": \"0xe08E8EfAc66c83a5e2cE9E0a696f8416A5AB6136\",\r\n        \"channels\": \"0x81a79fcDe8FFE6452e51D8E0493B37C2a5a09c57\",\r\n        \"module_implementation\": \"0x5F36592e29D90558bc629a4afd87D37d38d9a595\",\r\n        \"node_safe_migration\": \"0xb9a6F18b40f632869dEFa4bbB2212c63767Eb159\",\r\n        \"node_safe_registry\": \"0x8cDf9A10646403C9aA797610D4C782aD26D334f4\",\r\n        \"node_stake_factory\": \"0x6827eC1Bf6232B07f30C2F2924Ea681412b07687\",\r\n        \"ticket_price_oracle\": \"0xca2c60433eC6a10dDEabBbE3Ce7f9737b1a0628C\",\r\n        \"token\": \"0xD4fdec44DB9D44B8f2b6d529620f9C0C7066A2c1\",\r\n        \"winning_probability_oracle\": \"0x5136Bac09C78af89bDA56F5086A3F3E2Ee4EAfCa\"\r\n      },\r\n      \"chain_id\": 100,\r\n      \"environment_type\": \"staging\",\r\n      \"indexer_start_block_number\": 29690235\r\n    }\r\n```\r\n\r\n\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n## Summary by CodeRabbit\r\n\r\n* **New Features**\r\n  * Added WinningProbabilityOracle contract.\r\n  * Introduced Safe-based node migration capabilities.\r\n  * Added support for new networks (jura, rotsee, dufour) with contract address mappings.\r\n  * Expanded utility and module contracts.\r\n\r\n* **Documentation**\r\n  * Updated audit documentation with latest scope and repository references.\r\n  * Added comprehensive migration process guidance.\r\n  * Established audit documentation site with Jekyll configuration.\r\n\r\n* **Chores**\r\n  * Version bump to 4.6.0.\r\n  * Restructured contract organization and directory layout.\r\n\r\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\r\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "Add deployments for jura network",
+    "updatedAt": "2026-01-28T12:02:47Z",
+    "url": "https://github.com/hoprnet/contracts/pull/65"
+  },
+  {
+    "author": "NumberFour8",
+    "body": "- adds `Option<usize>` as an upper concurrency limit\r\n- removes deprecated `async-std` dependency from tests\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added optional bounded concurrency to the then_concurrent extension so callers can limit concurrent operations.\n\n* **Chores**\n  * Bumped package to 2.0.0, updated dependencies, and migrated test infra to use Tokio.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: add optional upper limit on concurrent tasks",
+    "updatedAt": "2026-02-05T17:04:54Z",
+    "url": "https://github.com/hoprnet/rust-stream-ext-concurrent/pull/1"
+  },
+  {
+    "author": "Jaguaras",
+    "body": "Added detailed instructions for using Gnosis RPC provider and Public Node RPC provider.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Updated RPC provider guidance to reference Tenderly alongside Nethermind.\n  * Replaced the HOPR example with Gnosis RPC endpoints (rpc.gnosischain.com, gnosis.publicnode.com).\n  * Removed the separate Public Node section and consolidated its guidance into the main provider recommendations.\n  * Clarified that these third‑party providers are free and suitable for running a node.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "Enhance documentation for third-party RPC providers",
+    "updatedAt": "2026-02-04T13:17:14Z",
+    "url": "https://github.com/hoprnet/hopr-docs/pull/180"
+  },
+  {
+    "author": "tolbrino",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Removed Docker security scanning (Trivy) and software bill of materials (SBOM) generation features along with associated build recipes, documentation, and development dependencies.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "feat: Remove SBOM and trivy functionality",
+    "updatedAt": "2026-01-30T09:57:29Z",
+    "url": "https://github.com/hoprnet/nix-lib/pull/7"
+  },
+  {
+    "author": "tolbrino",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Enhanced flake dependencies documentation in architecture guide\n  * Improved README formatting and clarity\n\n* **Chores**\n  * Updated crane tool to v0.23.0\n  * Added format validation check to build pipeline\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Ensure correct rust version is used",
+    "updatedAt": "2026-01-30T08:16:36Z",
+    "url": "https://github.com/hoprnet/nix-lib/pull/5"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "The close release workflow is using the permissions of the invoker to bump the version in `main` branch directly. It needs to use the Hopr bot token which has an exclusion to do commits directly in `main` branch.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n## Release Notes\n\n* **Chores**\n  * Bumped package version to 3.14.4\n  * Updated release workflow configuration\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Allow the close release pipeline to bump version using hopr bot",
+    "updatedAt": "2026-01-30T16:04:33Z",
+    "url": "https://github.com/hoprnet/ct-research/pull/729"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "Fixes the close release workflow when tries to generate the release notes. \n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated release workflow configuration to streamline the release process.\n  * Enhanced release notifications with additional communication channels.\n  * Adjusted binary attachment handling in release operations.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Fix Generate change log",
+    "updatedAt": "2026-01-30T10:31:04Z",
+    "url": "https://github.com/hoprnet/ct-research/pull/728"
+  },
+  {
+    "author": "ausias-armesto",
+    "body": "Fixes permissions needed by the scan feature on building docker images\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Expanded CI/CD workflow permissions to support additional deployment and security actions.\n  * Added a configurable option to control whether builds fail on vulnerability scans.\n  * Clarified the wording for the release version input in the release workflow.\n  * Updated the registry credentials reference used by the build step.\n\n<sub>✏️ Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "fix: Fix permissions on workflows",
+    "updatedAt": "2026-01-30T10:05:13Z",
+    "url": "https://github.com/hoprnet/ct-research/pull/727"
+  },
+  {
+    "author": "jeandemeusy",
+    "body": "As in title",
+    "state": "MERGED",
+    "title": "feat: exception logging",
+    "updatedAt": "2026-01-29T16:48:06Z",
+    "url": "https://github.com/hoprnet/ct-research/pull/726"
+  },
+  {
+    "author": "mjadach-iv",
+    "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n- New Features\n  - Session objects now include hoprMtu, surbLen, activeClients and new limits; session capabilities expanded.\n  - New session config API to read/update maxSurbUpstream and responseBuffer; client adapter exposes get/update session config.\n\n- Chores\n  - CI migrated to Nix-based workflows on larger runners; repo dev shells added for Node 22 and 24; checkout action updated.\n\n- Style\n  - Formatting and whitespace cleanups; ensured newline at EOF.\n\n- Tests\n  - Updated/added tests for session payloads, open/get/update session config, and corrupted-channels response shape.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "state": "MERGED",
+    "title": "Session changes",
+    "updatedAt": "2026-01-20T16:23:11Z",
+    "url": "https://github.com/hoprnet/hopr-sdk/pull/156"
+  }
 ]
