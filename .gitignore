@@ -1,2 +1,20 @@
+# Secrets / local env
 .env
-node_modules/*
+.env.*
+!.env.example
+.envrc
+secrets.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Generated runtime artifacts
+/inputs/*.json
+/outputs/*.txt
+/log
+
+# Rust build output
+/target
