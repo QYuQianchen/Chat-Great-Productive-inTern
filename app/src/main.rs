@@ -186,6 +186,7 @@ struct CliArgs<'a> {
     command: CliCommand,
     start_date: Option<&'a str>,
     end_date: Option<&'a str>,
+    duration_days: Option<u64>,
 }
 
 fn display_recipient_to_stream_name(value: &serde_json::Value) -> String {
@@ -225,23 +226,47 @@ fn run_command(program: &str, args: &[&str]) -> AppResult<String> {
 fn gather_inputs(
     start_date_override: Option<&str>,
     end_date_override: Option<&str>,
+    duration_days_override: Option<u64>,
 ) -> AppResult<()> {
     let org = env_or_default(&["GITHUB_ORG"], DEFAULT_ORG);
-    let start_date = pick_date(
-        start_date_override,
-        &["START_DATE", "start_date"],
-        DEFAULT_START_DATE,
-    );
-    let end_date = pick_date(
-        end_date_override,
-        &["END_DATE", "end_date"],
-        DEFAULT_END_DATE,
-    );
+    let (start_date, end_date) = if let Some(duration_days) = duration_days_override {
+        let today = Utc::now().date_naive();
+        let start_day = today
+            .checked_sub_days(Days::new(duration_days))
+            .ok_or("Could not compute start date from --duration-days.")?;
+        let end_day_exclusive = today
+            .checked_add_days(Days::new(1))
+            .ok_or("Could not compute end date from current day.")?;
+        (
+            start_day.format("%Y-%m-%d").to_string(),
+            end_day_exclusive.format("%Y-%m-%d").to_string(),
+        )
+    } else {
+        (
+            pick_date(
+                start_date_override,
+                &["START_DATE", "start_date"],
+                DEFAULT_START_DATE,
+            ),
+            pick_date(
+                end_date_override,
+                &["END_DATE", "end_date"],
+                DEFAULT_END_DATE,
+            ),
+        )
+    };
 
-    println!(
-        "Fetching PRs from {} to {} across public repos in org: {}",
-        start_date, end_date, org
-    );
+    if let Some(duration_days) = duration_days_override {
+        println!(
+            "Fetching PRs since {} 00:00:00 UTC (lookback {} day(s)) across public repos in org: {}",
+            start_date, duration_days, org
+        );
+    } else {
+        println!(
+            "Fetching PRs from {} to {} across public repos in org: {}",
+            start_date, end_date, org
+        );
+    }
 
     let search = format!(
         "merged:>={} updated:<{} -author:app/renovate label:stale -label:stale -draft:true",
@@ -316,6 +341,7 @@ fn gather_inputs(
 async fn gather_zulip_messages(
     start_date_override: Option<&str>,
     end_date_override: Option<&str>,
+    duration_days_override: Option<u64>,
 ) -> AppResult<()> {
     let base_url = env::var("ZULIP_BASE_URL")
         .map_err(|_| "ZULIP_BASE_URL is required. Example: https://your-org.zulipchat.com")?;
@@ -324,22 +350,49 @@ async fn gather_zulip_messages(
     let api_key = env::var("ZULIP_API_KEY")
         .map_err(|_| "ZULIP_API_KEY is required for Zulip authentication.")?;
 
-    let start_date = pick_date(
-        start_date_override,
-        &["ZULIP_START_DATE", "START_DATE", "start_date"],
-        DEFAULT_START_DATE,
-    );
-    let end_date = pick_date(
-        end_date_override,
-        &["ZULIP_END_DATE", "END_DATE", "end_date"],
-        DEFAULT_END_DATE,
-    );
-    let (start_ts, end_exclusive_ts) = parse_utc_range(&start_date, &end_date)?;
+    let (start_date, end_date_label, start_ts, end_exclusive_ts, using_duration) =
+        if let Some(duration_days) = duration_days_override {
+            let now = Utc::now();
+            let today = now.date_naive();
+            let start_day = today
+                .checked_sub_days(Days::new(duration_days))
+                .ok_or("Could not compute start date from --duration-days.")?;
+            let start_dt = start_day
+                .and_hms_opt(0, 0, 0)
+                .ok_or("Could not build start datetime at midnight UTC.")?;
+            (
+                start_day.format("%Y-%m-%d").to_string(),
+                format!("now ({})", now.to_rfc3339()),
+                start_dt.and_utc().timestamp(),
+                now.timestamp(),
+                true,
+            )
+        } else {
+            let start_date = pick_date(
+                start_date_override,
+                &["ZULIP_START_DATE", "START_DATE", "start_date"],
+                DEFAULT_START_DATE,
+            );
+            let end_date = pick_date(
+                end_date_override,
+                &["ZULIP_END_DATE", "END_DATE", "end_date"],
+                DEFAULT_END_DATE,
+            );
+            let (start_ts, end_exclusive_ts) = parse_utc_range(&start_date, &end_date)?;
+            (start_date, end_date, start_ts, end_exclusive_ts, false)
+        };
 
-    println!(
-        "Fetching Zulip stream messages from {} to {} (UTC) across all channels/topics",
-        start_date, end_date
-    );
+    if using_duration {
+        println!(
+            "Fetching Zulip stream messages from {} 00:00:00 UTC to {} across all channels/topics",
+            start_date, end_date_label
+        );
+    } else {
+        println!(
+            "Fetching Zulip stream messages from {} to {} (UTC) across all channels/topics",
+            start_date, end_date_label
+        );
+    }
 
     let normalized_base = base_url.trim_end_matches('/');
     let messages_url = if normalized_base.ends_with("/api/v1") {
@@ -888,9 +941,10 @@ fn parse_cli_args(args: &[String]) -> AppResult<CliArgs<'_>> {
                     command: CliCommand::Help,
                     start_date: None,
                     end_date: None,
+                    duration_days: None,
                 });
             }
-            "--start-date" | "--end-date" => {
+            "--start-date" | "--end-date" | "--duration-days" => {
                 command = CliCommand::Github;
                 index = 1;
             }
@@ -908,6 +962,7 @@ fn parse_cli_args(args: &[String]) -> AppResult<CliArgs<'_>> {
 
     let mut start_date: Option<&str> = None;
     let mut end_date: Option<&str> = None;
+    let mut duration_days: Option<u64> = None;
     let mut i = index;
 
     while i < args.len() {
@@ -932,11 +987,28 @@ fn parse_cli_args(args: &[String]) -> AppResult<CliArgs<'_>> {
                 end_date = Some(value.as_str());
                 i += 2;
             }
+            "--duration-days" => {
+                if duration_days.is_some() {
+                    return Err("Duplicate `--duration-days` argument.".into());
+                }
+                let value = args.get(i + 1).ok_or(
+                    "Missing value for `--duration-days`. Expected a non-negative integer.",
+                )?;
+                let parsed = value.parse::<u64>().map_err(|_| {
+                    format!(
+                        "Invalid `--duration-days` value `{}`. Expected a non-negative integer.",
+                        value
+                    )
+                })?;
+                duration_days = Some(parsed);
+                i += 2;
+            }
             "-h" | "--help" => {
                 return Ok(CliArgs {
                     command: CliCommand::Help,
                     start_date: None,
                     end_date: None,
+                    duration_days: None,
                 });
             }
             other => {
@@ -945,18 +1017,34 @@ fn parse_cli_args(args: &[String]) -> AppResult<CliArgs<'_>> {
         }
     }
 
+    if duration_days.is_some() && (start_date.is_some() || end_date.is_some()) {
+        return Err(
+            "`--duration-days` cannot be combined with `--start-date` or `--end-date`.".into(),
+        );
+    }
+
     Ok(CliArgs {
         command,
         start_date,
         end_date,
+        duration_days,
     })
 }
 
 fn print_usage(bin_name: &str) {
     println!("Usage:");
-    println!("  {bin_name} github [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD]");
-    println!("  {bin_name} zulip  [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD]");
-    println!("  {bin_name} [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD]  # defaults to github");
+    println!(
+        "  {bin_name} github [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
+    );
+    println!(
+        "  {bin_name} zulip  [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
+    );
+    println!(
+        "  {bin_name} [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]  # defaults to github"
+    );
+    println!(
+        "  Note: --duration-days cannot be combined with --start-date/--end-date. Start time is 00:00:00 UTC."
+    );
 }
 
 async fn run_github_report(
@@ -965,8 +1053,13 @@ async fn run_github_report(
     model: &str,
     start_date_override: Option<&str>,
     end_date_override: Option<&str>,
+    duration_days_override: Option<u64>,
 ) -> AppResult<()> {
-    gather_inputs(start_date_override, end_date_override)?;
+    gather_inputs(
+        start_date_override,
+        end_date_override,
+        duration_days_override,
+    )?;
     step_one(client, api_key, model).await?;
     step_two(client, api_key, model).await?;
     Ok(())
@@ -978,8 +1071,14 @@ async fn run_zulip_report(
     model: &str,
     start_date_override: Option<&str>,
     end_date_override: Option<&str>,
+    duration_days_override: Option<u64>,
 ) -> AppResult<()> {
-    gather_zulip_messages(start_date_override, end_date_override).await?;
+    gather_zulip_messages(
+        start_date_override,
+        end_date_override,
+        duration_days_override,
+    )
+    .await?;
     summarize_zulip_discussion(client, api_key, model).await?;
     Ok(())
 }
@@ -1009,6 +1108,7 @@ async fn main() -> AppResult<()> {
                 &model,
                 cli_args.start_date,
                 cli_args.end_date,
+                cli_args.duration_days,
             )
             .await?
         }
@@ -1019,6 +1119,7 @@ async fn main() -> AppResult<()> {
                 &model,
                 cli_args.start_date,
                 cli_args.end_date,
+                cli_args.duration_days,
             )
             .await?
         }

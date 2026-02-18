@@ -16,10 +16,16 @@ CLI commands:
 - optional date window for either command:
   - `--start-date YYYY-MM-DD`
   - `--end-date YYYY-MM-DD`
+- lookback duration option for either command:
+  - `--duration-days N`
+  - starts at `00:00:00 UTC` on `N` days ago
+  - cannot be combined with `--start-date` or `--end-date`
 
 Examples:
 - `./hopr-pm github --start-date 2026-01-01 --end-date 2026-01-31`
 - `./hopr-pm zulip --start-date 2026-01-01 --end-date 2026-01-31`
+- `./hopr-pm github --duration-days 2`
+- `./hopr-pm zulip --duration-days 2`
 - help: `./hopr-pm --help`
 
 Equivalent Cargo form:
