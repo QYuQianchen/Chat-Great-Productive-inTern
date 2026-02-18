@@ -1,9 +1,10 @@
 [package]
-name = "app"
+name = "hopr-pm"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+chrono = { workspace = true }
 dotenvy = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }
