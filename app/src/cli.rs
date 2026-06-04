@@ -3,6 +3,7 @@ use crate::constants::AppResult;
 #[derive(Debug, Clone, Copy)]
 pub enum CliCommand {
     Github,
+    GnosisVpn,
     Zulip,
     Help,
 }
@@ -23,6 +24,10 @@ pub fn parse_cli_args(args: &[String]) -> AppResult<CliArgs> {
         match first {
             "github" => {
                 command = CliCommand::Github;
+                index = 2;
+            }
+            "gnosis-vpn" => {
+                command = CliCommand::GnosisVpn;
                 index = 2;
             }
             "zulip" => {
@@ -46,7 +51,7 @@ pub fn parse_cli_args(args: &[String]) -> AppResult<CliArgs> {
             }
             other => {
                 return Err(format!(
-                    "Unknown command `{other}`. Use `github`, `zulip`, or `--help`."
+                    "Unknown command `{other}`. Use `github`, `gnosis-vpn`, `zulip`, or `--help`."
                 )
                 .into());
             }
@@ -127,10 +132,13 @@ pub fn parse_cli_args(args: &[String]) -> AppResult<CliArgs> {
 pub fn print_usage(bin_name: &str) {
     println!("Usage:");
     println!(
-        "  {bin_name} github [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
+        "  {bin_name} github     [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
     );
     println!(
-        "  {bin_name} zulip  [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
+        "  {bin_name} gnosis-vpn [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
+    );
+    println!(
+        "  {bin_name} zulip      [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]"
     );
     println!(
         "  {bin_name} [--start-date YYYY-MM-DD] [--end-date YYYY-MM-DD] [--duration-days N]  # defaults to github"
