@@ -1,6 +1,7 @@
 mod cli;
 mod constants;
 mod github;
+mod gnosis_vpn;
 mod openai;
 mod util;
 mod zulip;
@@ -38,11 +39,35 @@ async fn main() -> AppResult<()> {
             )
             .await?
         }
+        cli::CliCommand::GnosisVpn => {
+            gnosis_vpn::run_report(
+                &client,
+                &api_key,
+                &model,
+                cli_args.start_date.as_deref(),
+                cli_args.end_date.as_deref(),
+                cli_args.duration_days,
+            )
+            .await?
+        }
         cli::CliCommand::Zulip => {
             zulip::run_report(
                 &client,
                 &api_key,
                 &model,
+                cli_args.start_date.as_deref(),
+                cli_args.end_date.as_deref(),
+                cli_args.duration_days,
+            )
+            .await?
+        }
+        cli::CliCommand::ZulipTopic { channel, topic } => {
+            zulip::run_topic_report(
+                &client,
+                &api_key,
+                &model,
+                &channel,
+                &topic,
                 cli_args.start_date.as_deref(),
                 cli_args.end_date.as_deref(),
                 cli_args.duration_days,
