@@ -61,6 +61,19 @@ async fn main() -> AppResult<()> {
             )
             .await?
         }
+        cli::CliCommand::ZulipTopic { channel, topic } => {
+            zulip::run_topic_report(
+                &client,
+                &api_key,
+                &model,
+                &channel,
+                &topic,
+                cli_args.start_date.as_deref(),
+                cli_args.end_date.as_deref(),
+                cli_args.duration_days,
+            )
+            .await?
+        }
         cli::CliCommand::Help => {}
     }
 

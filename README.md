@@ -84,17 +84,39 @@ hopr-pm zulip --duration-days 14
 
 Outputs: `inputs/zulip_messages.json`, `outputs/zulip_chunk_summaries.txt`, `outputs/zulip_summary.md`
 
+### `zulip topic`
+
+Deep-dives into a single channel/topic thread. Fetches only that thread's messages and produces a focused summary.
+
+```sh
+# All history (default when no date flags are given)
+hopr-pm zulip topic --channel my-channel --topic "some topic"
+
+# Explicit date range
+hopr-pm zulip topic --channel my-channel --topic "some topic" \
+  --start-date 2026-01-01 --end-date 2026-03-31
+
+# Lookback
+hopr-pm zulip topic --channel my-channel --topic "some topic" --duration-days 90
+```
+
+`--channel` and `--topic` are required. When no date flags are given, all history for that thread is fetched.
+
+Outputs: `inputs/zulip_topic_messages.json`, `outputs/zulip_topic_summary.md`
+
 ## Date options
 
-All commands accept the same date flags (mutually exclusive):
+All commands accept these flags (mutually exclusive):
 
 | Flag | Description |
 |---|---|
 | `--start-date YYYY-MM-DD` | Explicit start date |
 | `--end-date YYYY-MM-DD` | Explicit end date |
-| `--duration-days N` | Lookback N days from today at `00:00:00 UTC`; cannot combine with `--start-date`/`--end-date` |
+| `--duration-days N` | Lookback N days from today at `00:00:00 UTC`; cannot combine with the above |
 
-When no date flags are given, `START_DATE` / `END_DATE` env vars are used, falling back to the defaults in `.env.example`.
+**Default behaviour when no date flags are given:**
+- `github`, `gnosis-vpn`, `zulip` — fall back to `START_DATE` / `END_DATE` env vars, then to the hardcoded defaults in `.env.example`
+- `zulip topic` — fetches **all history** for that thread (no env var fallback)
 
 ## Help
 

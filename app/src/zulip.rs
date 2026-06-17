@@ -9,7 +9,7 @@ use std::io::Write;
 use crate::constants::{
     AppResult, DEFAULT_END_DATE, DEFAULT_START_DATE, ZULIP_CHUNK_SUMMARIES_PATH,
     ZULIP_MESSAGE_CHAR_LIMIT, ZULIP_OUTPUT_PATH, ZULIP_PAGE_SIZE, ZULIP_SUMMARY_CHUNK_SIZE,
-    ZULIP_SUMMARY_PATH,
+    ZULIP_SUMMARY_PATH, ZULIP_TOPIC_INPUT_PATH, ZULIP_TOPIC_SUMMARY_PATH,
 };
 use crate::openai::create_chat_completion;
 use crate::util::{
@@ -472,5 +472,260 @@ pub async fn run_report(
     )
     .await?;
     summarize_discussion(client, api_key, model).await?;
+    Ok(())
+}
+
+// ── zulip topic subcommand ────────────────────────────────────────────────────
+
+fn resolve_topic_date_range(
+    start_date_override: Option<&str>,
+    end_date_override: Option<&str>,
+    duration_days_override: Option<u64>,
+) -> AppResult<(i64, i64, String)> {
+    if let Some(duration_days) = duration_days_override {
+        let now = Utc::now();
+        let today = now.date_naive();
+        let start_day = today
+            .checked_sub_days(Days::new(duration_days))
+            .ok_or("Could not compute start date from --duration-days.")?;
+        let start_dt = start_day
+            .and_hms_opt(0, 0, 0)
+            .ok_or("Could not build start datetime at midnight UTC.")?;
+        let desc = format!(
+            "last {} day(s) since {} 00:00:00 UTC",
+            duration_days,
+            start_day.format("%Y-%m-%d")
+        );
+        return Ok((start_dt.and_utc().timestamp(), now.timestamp(), desc));
+    }
+
+    if start_date_override.is_some() || end_date_override.is_some() {
+        let today = Utc::now().date_naive();
+        let tomorrow = today
+            .checked_add_days(Days::new(1))
+            .ok_or("Could not compute tomorrow's date.")?
+            .format("%Y-%m-%d")
+            .to_string();
+        let start_str = start_date_override.unwrap_or("2000-01-01");
+        let end_str = end_date_override.unwrap_or(tomorrow.as_str());
+        let (start_ts, end_ts) = parse_utc_range(start_str, end_str)?;
+        let desc = format!("from {} to {}", start_str, end_str);
+        return Ok((start_ts, end_ts, desc));
+    }
+
+    // Default: fetch all history from the beginning of the topic.
+    Ok((0, Utc::now().timestamp(), "all history".to_string()))
+}
+
+async fn fetch_topic_messages(
+    base_url: &str,
+    email: &str,
+    zulip_api_key: &str,
+    channel: &str,
+    topic: &str,
+    start_ts: i64,
+    end_ts: i64,
+) -> AppResult<Vec<ZulipOutputMessage>> {
+    let normalized_base = base_url.trim_end_matches('/');
+    let messages_url = if normalized_base.ends_with("/api/v1") {
+        format!("{normalized_base}/messages")
+    } else {
+        format!("{normalized_base}/api/v1/messages")
+    };
+
+    let narrow = serde_json::json!([
+        {"operator": "stream", "operand": channel},
+        {"operator": "topic",  "operand": topic}
+    ])
+    .to_string();
+
+    let http = Client::new();
+    let mut anchor = "newest".to_string();
+    let mut collected: Vec<ZulipOutputMessage> = Vec::new();
+
+    loop {
+        let page_size = ZULIP_PAGE_SIZE.to_string();
+        let response = http
+            .get(&messages_url)
+            .basic_auth(email, Some(zulip_api_key))
+            .query(&[
+                ("anchor", anchor.as_str()),
+                ("num_before", page_size.as_str()),
+                ("num_after", "0"),
+                ("apply_markdown", "false"),
+                ("narrow", narrow.as_str()),
+            ])
+            .send()
+            .await?;
+
+        let status = response.status();
+        if !status.is_success() {
+            let error_body = response.text().await.unwrap_or_default();
+            return Err(format!("Zulip API error {status}: {error_body}").into());
+        }
+
+        let page = response.json::<ZulipMessagesResponse>().await?;
+        if page.messages.is_empty() {
+            break;
+        }
+
+        let oldest_id = page.messages.first().map(|m| m.id).unwrap_or(0);
+        let oldest_ts = page
+            .messages
+            .first()
+            .map(|m| m.timestamp)
+            .unwrap_or(i64::MAX);
+
+        for message in page.messages {
+            if message.timestamp < start_ts || message.timestamp >= end_ts {
+                continue;
+            }
+            let topic_text = if !message.topic.is_empty() {
+                message.topic
+            } else {
+                message.subject
+            };
+            collected.push(ZulipOutputMessage {
+                id: message.id,
+                timestamp: message.timestamp,
+                datetime: timestamp_to_rfc3339(message.timestamp),
+                stream: display_recipient_to_stream_name(&message.display_recipient),
+                topic: topic_text,
+                sender_full_name: message.sender_full_name,
+                sender_email: message.sender_email,
+                content: message.content,
+            });
+        }
+
+        if page.found_oldest || oldest_id == 0 || oldest_ts < start_ts {
+            break;
+        }
+
+        anchor = oldest_id.saturating_sub(1).to_string();
+    }
+
+    collected.sort_by_key(|m| (m.timestamp, m.id));
+    Ok(collected)
+}
+
+async fn summarize_topic(
+    client: &Client,
+    api_key: &str,
+    model: &str,
+    messages: Vec<ZulipOutputMessage>,
+    channel: &str,
+    topic: &str,
+) -> AppResult<()> {
+    let chunks = build_zulip_topic_chunks(messages, ZULIP_SUMMARY_CHUNK_SIZE);
+    println!(
+        "Summarizing {} chunk(s) for channel=\"{}\" topic=\"{}\"...",
+        chunks.len(),
+        channel,
+        topic
+    );
+
+    fs::create_dir_all("./outputs")?;
+
+    if chunks.len() == 1 {
+        let scope = chunk_scope(&chunks[0]);
+        let summary =
+            ask_chatgpt_to_summarize_zulip_chunk(client, api_key, model, &scope, &chunks[0])
+                .await?;
+        fs::write(
+            ZULIP_TOPIC_SUMMARY_PATH,
+            format!("{}\n", summary.trim_end()),
+        )?;
+    } else {
+        let mut partial_summaries: Vec<String> = Vec::new();
+        for (index, chunk) in chunks.iter().enumerate() {
+            let scope = chunk_scope(chunk);
+            println!(
+                "Summarizing chunk {}/{} ({})...",
+                index + 1,
+                chunks.len(),
+                scope
+            );
+            match ask_chatgpt_to_summarize_zulip_chunk(client, api_key, model, &scope, chunk)
+                .await
+            {
+                Ok(result) => {
+                    let trimmed = result.trim_end();
+                    partial_summaries
+                        .push(format!("CHUNK_{} [{}]:\n{trimmed}", index + 1, scope));
+                }
+                Err(err) => {
+                    eprintln!("Chunk {} failed: {err}", index + 1);
+                }
+            }
+        }
+
+        if partial_summaries.is_empty() {
+            return Err("All topic summary chunks failed.".into());
+        }
+
+        let merged = partial_summaries.join("\n\n");
+        let final_summary =
+            ask_chatgpt_to_merge_zulip_summaries(client, api_key, model, &merged).await?;
+        fs::write(
+            ZULIP_TOPIC_SUMMARY_PATH,
+            format!("{}\n", final_summary.trim_end()),
+        )?;
+    }
+
+    println!("Topic summary done. Wrote: {ZULIP_TOPIC_SUMMARY_PATH}");
+    Ok(())
+}
+
+pub async fn run_topic_report(
+    client: &Client,
+    api_key: &str,
+    model: &str,
+    channel: &str,
+    topic: &str,
+    start_date_override: Option<&str>,
+    end_date_override: Option<&str>,
+    duration_days_override: Option<u64>,
+) -> AppResult<()> {
+    let zulip_base_url = env::var("ZULIP_BASE_URL")
+        .map_err(|_| "ZULIP_BASE_URL is required. Example: https://your-org.zulipchat.com")?;
+    let zulip_email =
+        env::var("ZULIP_EMAIL").map_err(|_| "ZULIP_EMAIL is required for Zulip authentication.")?;
+    let zulip_api_key = env::var("ZULIP_API_KEY")
+        .map_err(|_| "ZULIP_API_KEY is required for Zulip authentication.")?;
+
+    let (start_ts, end_ts, date_desc) =
+        resolve_topic_date_range(start_date_override, end_date_override, duration_days_override)?;
+
+    println!(
+        "Fetching Zulip topic: channel=\"{}\" topic=\"{}\" ({})",
+        channel, topic, date_desc
+    );
+
+    let messages = fetch_topic_messages(
+        &zulip_base_url,
+        &zulip_email,
+        &zulip_api_key,
+        channel,
+        topic,
+        start_ts,
+        end_ts,
+    )
+    .await?;
+
+    if messages.is_empty() {
+        eprintln!(
+            "No messages found for channel=\"{}\" topic=\"{}\" in the given date range.",
+            channel, topic
+        );
+        return Ok(());
+    }
+
+    println!("Fetched {} messages.", messages.len());
+
+    fs::create_dir_all("./inputs")?;
+    let json = serde_json::to_string_pretty(&messages)?;
+    fs::write(ZULIP_TOPIC_INPUT_PATH, format!("{json}\n"))?;
+
+    summarize_topic(client, api_key, model, messages, channel, topic).await?;
     Ok(())
 }
